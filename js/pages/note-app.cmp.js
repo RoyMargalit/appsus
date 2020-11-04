@@ -9,73 +9,45 @@ export default {
     name: 'note-app',
     template: `
     <section v-if="notes" >
-            <!-- <component  :is= "cmp" >{{notes}}</component> -->
-            <note-add :types="types"></note-add>
-
-         <!-- <input v-model="noteToEdit.title" placeholder = "what is on Your mind" /> -->
-         <!-- {{noteToEdit.title}} -->
-         
-         <!-- <button @click="chooseTodo"> Save</button> -->
-        <!-- <note-list :notes="notesToShow"></note-list> -->
+        <note-add :types="types"></note-add>
+        <note-list :notes="notesToShow"></note-list>
     </section>
     `,
     data() {
         return {
-            types:{
-                text:{field: 'text',placeholder:'keep your ideas!'},
-                image:{field: 'url',placeholder:'keep your images!'},
-                toDo:{field: 'text',placeholder:'What to do next!'},
+            types: {
+                text: { field: 'text', placeholder: 'keep your ideas!' },
+                image: { field: 'url', placeholder: 'keep your images!' },
+                toDo: { field: 'text', placeholder: 'What to do next!' },
             },
-            cmp:null,
+            cmp: null,
             notes: null,
             filterBy: null,
-            type:null,
-            isText:false,
-            noteToEdit:null,
+            type: null,
+            isText: false,
+            // noteToEdit: null,
         }
     },
-    methods:{
-        selectedCmp(){
-            return 'input'
-        },
-        getType(){
-            return this.type
-        },
-        
-        setVal(ev){
-            this.notes.info.txt= val
-        },
-        chooseText(){
-            this.cmp='note-text'
-            console.log(this.cmp)
-        },
-        chooseImage(){
-            this.cmp='note-img'
-            console.log(this.cmp)
-        },
-        chooseTodo(){
-            this.cmp='note-to-do'
-            console.log(this.cmp)
-        },
+    methods: {
     },
     computed: {
         notesToShow() {
             if (!this.filterBy) return this.notes;
         },
-        noteType(idx){
+        noteType(idx) {
             console.log(this.notes[idx].type);
-            return this.note.type='text'
+            return this.note.type = 'text'
         },
-        
-       
+
+
     },
     created() {
         // console.log('created');
         noteService.getNotes()
             .then(notes => this.notes = notes)
         // .then(console.log('this notes', this.notes))
-        this.noteToEdit=noteService.getEmptyNote()
-            .then(note=>this.noteToEdit=note)
+        // this.noteToEdit = noteService.getEmptyNote()
+        //     .then(note => this.noteToEdit = note)
     },
 
     components: {

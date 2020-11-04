@@ -2,9 +2,9 @@ import { utilService } from '../../../service/util-service.js'
 
 export const noteService = {
     getNotes,
-    getEmptyNote
+    getEmptyNote,
 }
-const STORAGE_KEY = 'noteDB '
+const STORAGE_KEY = 'noteDB'
 
 function getNotes() {
     var notes = utilService.loadFromStorage(STORAGE_KEY)
@@ -16,6 +16,10 @@ function getNotes() {
     return Promise.resolve(notes)
 
 }
+// function saveNote(val){
+//     console.log(val);
+//     utilService.storeToStorage(STORAGE_KEY,val)
+// }
 
 function _createNotes() {
     return gNotes
@@ -23,14 +27,13 @@ function _createNotes() {
 
 
 function getEmptyNote() {
-    var empty = {
+    return {
         id: utilService.makeId(),
         type: 'text',
         isPinned: false,
         info: {}
 
     }
-    return Promise.resolve(empty)
 }
 
 var gNotes = [

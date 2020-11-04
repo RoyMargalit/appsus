@@ -4,8 +4,7 @@
 export default {
     props:['note'],
     template:`
-    <section>
-        <!-- <h2>note Preview</h2> -->
+    <section class= "note-preview">
         <p>{{note}}</p>
     </section>
     `,
