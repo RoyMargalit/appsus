@@ -22,14 +22,16 @@ function _createNotes(){
 
 var gNotes = [
     {
-        type: "NoteText",
+        id:utilService.makeId(),
+        type: "note-text",
         isPinned: true,
         info: {
             txt: "Fullstack Me Baby!"
         }
     },
     {
-        type: "NoteImg",
+        id:utilService.makeId(),
+        type: "note-img",
         info: {
             url: "http://some-img/me",
             title: "Me playing Mi"
@@ -39,7 +41,8 @@ var gNotes = [
         }
     },
     {
-        type: "NoteTodos",
+        id:utilService.makeId(),
+        type: "note-to-do",
         info: {
             label: "How was it:",
             todos: [
