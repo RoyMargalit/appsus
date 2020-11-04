@@ -1,3 +1,11 @@
+@import "main-nav-bar.css";
+@import "home-page.css";
+
+*{
+    box-sizing: border-box;
+}
+
 body{
+    margin: 0;
     background-color: bisque;
 }

@@ -1,5 +1,5 @@
 import {myRouter} from './routes.js'
-
+import appsusHeader from '../cmps/appsus-header.cmp.js'
 
 
 const options = {
@@ -7,13 +7,14 @@ const options = {
     router:myRouter,
     template: `
         <section>
-            <h1>Apssus</h1>
+            <appsus-header></appsus-header>
             <main>
                 <router-view></router-view>
             </main>
         </section>
     `,
     components:{
+        appsusHeader
     }
 
 }

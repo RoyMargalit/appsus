@@ -1,8 +1,6 @@
-import homePage from '../pages/home-page.cmp.js'
-import mailPage from '../pages/mail-app.cmp.js'
-import notePage from '../pages/note-app.cmp.js'
-import mailList from '../apps/mail/mail-cmp/mail-list.cmp.js'
-// import mailPreview from '../apps/mail/mail-cmp/mail-preview.cmp.js'
+import homePage from '../js/pages/home-page.cmp.js'
+import mailApp from '../js/pages/mail-app.cmp.js'
+import noteApp from '../js/pages/note-app.cmp.js'
 
 
 const myRoutes = [
@@ -12,23 +10,13 @@ const myRoutes = [
     },
     {
         path:'/mail',
-        component:mailPage,
+        component:mailApp,
     },
-    {
-        path:'/mail/list',
-        component:mailList,
-    },
-    // {
-    //     path:'/mail/list/mailPreview',
-    //     component:mailPreview,
-    // },
     {
         path:'/note',
-        component:notePage,
+        component:noteApp,
     },
     
 ]
-
-
 
 export const myRouter = new VueRouter({ routes: myRoutes })
