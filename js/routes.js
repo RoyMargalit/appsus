@@ -1,6 +1,6 @@
 import homePage from '../pages/home-page.cmp.js'
 import mailPage from '../pages/mail-app.cmp.js'
-import keepPage from '../pages/keep-app.cmp.js'
+import notePage from '../pages/note-app.cmp.js'
 import mailList from '../apps/mail/mail-cmp/mail-list.cmp.js'
 // import mailPreview from '../apps/mail/mail-cmp/mail-preview.cmp.js'
 
@@ -23,8 +23,8 @@ const myRoutes = [
     //     component:mailPreview,
     // },
     {
-        path:'/keep',
-        component:keepPage,
+        path:'/note',
+        component:notePage,
     },
     
 ]

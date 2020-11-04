@@ -32,14 +32,6 @@ export default {
             .then(mails => this.mails = mails)
             .then(console.log('this mails', this.mails))
     },
-
-
-
-
-
-
-
-
     components: {
         mailList,
 
