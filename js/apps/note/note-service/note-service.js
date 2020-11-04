@@ -2,6 +2,7 @@ import { utilService } from '../../../service/util-service.js'
 
 export const noteService = {
     getNotes,
+    getEmptyNote
 }
 const STORAGE_KEY = 'noteDB '
 
@@ -22,11 +23,14 @@ function _createNotes() {
 
 
 function getEmptyNote() {
-    return {
+    var empty = {
         id: utilService.makeId(),
         type: 'text',
-        isPinned:false,
-        }
+        isPinned: false,
+        info: {}
+
+    }
+    return Promise.resolve(empty)
 }
 
 var gNotes = [
@@ -40,6 +44,15 @@ var gNotes = [
     },
     {
         id: utilService.makeId(),
+        type: "note-text",
+        isPinned: true,
+        info: {
+            txt: "Fullstack Me Baby!"
+        },
+        placeholder: ''
+    },
+    {
+        id: utilService.makeId(),
         type: "note-img",
         info: {
             url: "http://some-img/me",
@@ -47,7 +60,9 @@ var gNotes = [
         },
         style: {
             backgroundColor: "#00d"
-        }
+        },
+        placeholder: ''
+
     },
     {
         id: utilService.makeId(),
@@ -57,7 +72,10 @@ var gNotes = [
             todos: [
                 { txt: "Do that", doneAt: null },
                 { txt: "Do this", doneAt: 187111111 }
-            ]
-        }
+            ],
+
+        },
+        placeholder: ''
+
     }
 ]
