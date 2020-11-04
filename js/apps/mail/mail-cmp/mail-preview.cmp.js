@@ -1,4 +1,5 @@
 
+import {eventBus} from '../../../service/event-bus-service.js'
 
 
 export default {
@@ -21,6 +22,8 @@ export default {
     methods: {
         getMailDetails() {
             console.log(this.mail.id);
+            // eventBus.$emit('getDetails', this.mail.id)
+            eventBus.$emit('getDetails', this.mail)
             this.$router.push('/mail/'  + this.mail.id)
             // console.log(book);
             // this.$emit('back', book)
