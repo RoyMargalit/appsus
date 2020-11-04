@@ -1,5 +1,5 @@
 import {myRouter} from './routes.js'
-import appsusHeader from '../cmps/appsus-header.cmp.js'
+import appsusHeader from './cmps/appsus-header.cmp.js'
 
 
 const options = {

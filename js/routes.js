@@ -1,7 +1,7 @@
 import homePage from '../js/pages/home-page.cmp.js'
 import mailApp from '../js/pages/mail-app.cmp.js'
 import noteApp from '../js/pages/note-app.cmp.js'
-import mailDetails from './pages/mail-details.cmp.js'
+import mailDetails from './apps/mail/mail-pages/mail-details.cmp.js'
 
 
 const myRoutes = [

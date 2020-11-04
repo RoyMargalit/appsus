@@ -20,12 +20,12 @@ function getMails() {
     return Promise.resolve(mails)
 }
 
-function _createMail(subject) {
+function _createMail(subject , body) {
     var mail =
     {
         id: utilService.makeId(),
         subject: subject,
-        body: 'sdfdsfsfgfs dfgdsfgdsfgsdfgsdg sdfgsdfg',
+        body,
         isRead: false,
         sentAt: Date.now(),
     }
@@ -34,9 +34,9 @@ function _createMail(subject) {
 
 function _createMails(){
     gMails= []
-    gMails.push(_createMail('hey there'))
-    gMails.push(_createMail('yo there'))
-    gMails.push(_createMail('howdy there'))
+    gMails.push(_createMail('hey there', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium similique porro doloremque dignissimos tempore debitis adipisci voluptatum sequi nam. Temporibus, soluta quasi suscipit pariatur veniam harum similique magnam voluptas rem?'))
+    gMails.push(_createMail('yo there', 'The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.'))
+    gMails.push(_createMail('howdy there', 'All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.'))
 
 
 }
