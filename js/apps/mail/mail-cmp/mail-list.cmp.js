@@ -4,16 +4,20 @@ import mailPreview from './mail-preview.cmp.js'
 export default {
     props:['mails'],
     template:`
-    <section>
+    <section class="mail-list">
         <h2>mail-list</h2>
-            <li v-for = "currMail in mails" :key="currMail.id">
-                <mail-preview :mail='currMail'></mail-preview>
-            {{currMail}}
-            </li>
+            <ul>
+                <li v-for = "currMail in mails" :key="currMail.id">
+                    <mail-preview :mail='currMail'></mail-preview>
+                    <!-- {{currMail}} -->
+                </li>
+            </ul>
     </section>
     `,
-
+     methods: {
+        
+    },
     components:{
         mailPreview
     }
-}
+} 

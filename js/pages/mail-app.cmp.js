@@ -10,7 +10,7 @@ export default {
     <section>
         <h2>mail</h2>
         <mail-list :mails="mailsToShow"></mail-list>
-        {{mails}}
+        <!-- {{mails}} -->
     </section>
     `,
     data() {
