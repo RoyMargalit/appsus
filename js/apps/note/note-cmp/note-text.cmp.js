@@ -7,6 +7,7 @@ export default {
     template:`
     <section>
         <h2>note TEXT!!!</h2>
+        {{info.txt}}
     </section>
     
     `,

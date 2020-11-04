@@ -8,11 +8,11 @@ export default {
     template: `
     <section v-if="notes" >
         <component :is= "note.type" v-for="note in notes"  :key="notes.id"
-        :info= "note.type" 
+        :info= "note.info" 
         ></component>
 
 
-         <input placeholder = "what is on Your mind" />
+         <input @input="setVal" placeholder = "what is on Your mind" />
          <button> Text </button>
          <button> Image</button>
          <button> Video</button>
@@ -30,7 +30,9 @@ export default {
         selectedCmp(){
             return 'input'
         },
-        
+        setVal(ev){
+            this.notes.info.txt= val
+        }
     },
     computed: {
         notesToShow() {
