@@ -35,19 +35,15 @@ export default {
 
         },
         addNote() {
-            // this.newNote = noteService.getEmptyNote();
-			// this.userData = '';
             
             
             
             this.newNote.info.text=this.inputUser
             console.log(this.newNote);
-            utilService.storeToStorage('noteDB',this.newNote)
-        
+            this.$emit('add',this.newNote)
+            this.newNote = noteService.getEmptyNote();
+			this.inputUser = '';
         },
-        // mounted()
         
     },
-
-
 }

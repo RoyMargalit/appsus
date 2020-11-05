@@ -9,7 +9,7 @@ export default {
     name: 'note-app',
     template: `
     <section v-if="notes" >
-        <note-add :types="types"></note-add>
+        <note-add :types="types" @add="addNote"></note-add>
         <note-list :notes="notesToShow"></note-list>
     </section>
     `,
@@ -29,6 +29,9 @@ export default {
         }
     },
     methods: {
+        addNote(newNote){
+            noteService.saveNote(newNote)
+        }
     },
     computed: {
         notesToShow() {
