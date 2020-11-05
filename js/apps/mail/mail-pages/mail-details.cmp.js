@@ -15,6 +15,8 @@ export default {
             <p >{{mail.body}}</p>
             <button @click="deleteMail(mail.id)" >Delete</button>
             <button @click="goBack()" >Back</button>
+            <!-- <button v-if="!mail.isRead"  @click="readMark">Read</button>
+            <button v-if="mail.isRead"  @click="readMark">Unread</button> -->
        </div>
     </section>
     `,

@@ -7,7 +7,7 @@ export default {
     template:`
     <section class="mail-preview" :class="mailRead">
         <!-- <h2>mail-preview </h2> -->
-        <p   @click="getMailDetails" >subject {{mail.subject}} </p>
+        <p   @click="getMailDetails" >{{mail.subject}}  {{mail.sentAt}} </p>
         <button v-if="!mail.isRead"  @click="readMark">Read</button>
         <button v-if="mail.isRead"  @click="readMark">Unread</button>
         

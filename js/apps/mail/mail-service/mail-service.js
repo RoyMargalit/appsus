@@ -5,7 +5,10 @@ export const mailService = {
     getById,
     remove,
     save,
-    countMailRead
+    countMailRead,
+    sendNewMail,
+    // currTime,
+    // addZero
 }
 
 const STORAGE_KEY = 'mailDB'
@@ -35,7 +38,6 @@ function save(mail) {
     if (mail.id) {
         const mailIdx = gMails.findIndex(currMail => mail.id === currMail.id)
         gMails.splice(mailIdx, 1, mail)
-        console.log(gMails);
         utilService.storeToStorage(STORAGE_KEY, gMails)
     }
 }
@@ -73,3 +75,24 @@ function getById(id) {
     const mail = gMails.find(currMail => currMail.id === id)
     return Promise.resolve(mail)
 }
+
+function sendNewMail(mail) {
+    gMails.unshift(mail)
+    utilService.storeToStorage(STORAGE_KEY, gMails)
+}
+
+// function currTime() {
+//     var d = this.time
+//     var h = this.addZero(d.getHours());
+//     var m = this.addZero(d.getMinutes());
+   
+//     // console.log(h + ":" + m + ':' + s);
+//     return h + ":" + m 
+// }
+
+// function addZero(i) {
+//     if (i < 10) {
+//         i = "0" + i;
+//     }
+//     return i;
+// }

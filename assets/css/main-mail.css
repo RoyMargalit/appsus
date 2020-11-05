@@ -54,6 +54,7 @@
 
 .mail-send {
     display: flex;
+    background-color: white;
 }
 
 .mail-msg {
