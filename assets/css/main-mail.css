@@ -65,6 +65,16 @@
     text-align: center;
 }
 
+.mail-msg input {
+    width: 100%;
+    padding: 5px;
+}
+
+.mail-msg textarea {
+    width: 100%;
+    padding: 5px;
+}
+
 .mail-side-nav {
     display: flex;
     flex-direction: column;

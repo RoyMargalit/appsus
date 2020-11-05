@@ -7,7 +7,7 @@ export const mailService = {
     save,
     countMailRead,
     sendNewMail,
-    // currTime,
+    currTime,
     // addZero
 }
 
@@ -56,7 +56,7 @@ function _createMail(subject, body) {
         subject: subject,
         body,
         isRead: false,
-        sentAt: Date.now(),
+        sentAt: Date.now()
     }
     return mail
 }
@@ -81,18 +81,18 @@ function sendNewMail(mail) {
     utilService.storeToStorage(STORAGE_KEY, gMails)
 }
 
-// function currTime() {
-//     var d = this.time
-//     var h = this.addZero(d.getHours());
-//     var m = this.addZero(d.getMinutes());
+function currTime() {
+    var d = new Date()
+    var h = addZero(d.getHours());
+    var m = addZero(d.getMinutes());
    
-//     // console.log(h + ":" + m + ':' + s);
-//     return h + ":" + m 
-// }
+    // console.log(h + ":" + m + ':' + s);
+    return h + ":" + m 
+}
 
-// function addZero(i) {
-//     if (i < 10) {
-//         i = "0" + i;
-//     }
-//     return i;
-// }
+function addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}

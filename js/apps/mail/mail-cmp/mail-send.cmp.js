@@ -9,7 +9,7 @@ export default {
     <section class="mail-send">
         <mail-side-nav></mail-side-nav>
         <div class="mail-msg">
-            <h2>mail send</h2>
+            <p>New Message</p>
             <form>
                 <input type="email" placeholder="To:"> 
                 <br>  
@@ -37,7 +37,7 @@ export default {
                 subject: null,
                 body: null,
                 isRead: false,
-                sentAt: Date.now(),
+                sentAt: mailService.currTime(),
             }
         }
     },
