@@ -21,7 +21,7 @@ export default {
             this.$emit('delete', mailId)
         },
         emitMailRead(mail) {
-            console.log(mail);
+            // console.log(mail);
             this.$emit('mailRead', mail)
         }
     },

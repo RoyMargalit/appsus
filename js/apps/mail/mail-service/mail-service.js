@@ -4,7 +4,8 @@ export const mailService = {
     getMails,
     getById,
     remove,
-    save
+    save,
+    countMailRead
 
 }
 
@@ -14,7 +15,7 @@ const STORAGE_KEY = 'mailDB'
 var gMails = []
 
 function getMails() {
-     gMails = utilService.loadFromStorage(STORAGE_KEY)
+    gMails = utilService.loadFromStorage(STORAGE_KEY)
     if (!gMails || !gMails.length) {
         _createMails()
         utilService.storeToStorage(STORAGE_KEY, gMails)
@@ -23,12 +24,20 @@ function getMails() {
     return Promise.resolve(gMails)
 }
 
-function save(mail) {
-    if(mail.id){
-        const mailIdx = gMails.findIndex(currMail=>mail.id===currMail.id)
-        gMails.splice(mailIdx,1,mail)
-        utilService.storeToStorage(STORAGE_KEY, gMails)
+function countMailRead() {
+    var countRead = 0
+    gMails.forEach(mail => {
+        if (mail.isRead) countRead++
+    })
+    return countRead
 }
+
+function save(mail) {
+    if (mail.id) {
+        const mailIdx = gMails.findIndex(currMail => mail.id === currMail.id)
+        gMails.splice(mailIdx, 1, mail)
+        utilService.storeToStorage(STORAGE_KEY, gMails)
+    }
 }
 
 function remove(mailId) {

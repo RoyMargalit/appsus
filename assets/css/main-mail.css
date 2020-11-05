@@ -8,11 +8,12 @@
     list-style-type: none;
     background-color: white;
     border: 1px solid black;
+    padding: 0;
 }
 
 .mail-list li p {
-    height: 100%;
-    width: 100%;
+    /* height: 100%;
+    width: 100%; */
     padding: 5px;
 }
 
@@ -26,4 +27,13 @@
     margin-inline-end: 200px;
     margin-inline-start: 200px;
     text-align: center;
+}
+
+.mail-preview{
+    width: 100%;
+    height: 100%;
+}
+
+.mail-status {
+    background-color: skyblue;
 }
