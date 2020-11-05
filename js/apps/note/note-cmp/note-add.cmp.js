@@ -1,6 +1,8 @@
 
-import { utilService } from '../../../service/util-service.js'
 import { noteService } from '../note-service/note-service.js'
+import noteText from '../note-cmp/note-text.cmp.js'
+import noteImg from '../note-cmp/note-img.cmp.js'
+import noteTodo from '../note-cmp/note-todo.cmp.js'
 
 export default {
     props: ['types'],
@@ -8,12 +10,18 @@ export default {
     <section class="note-add">
         <h2>note add!!!</h2>
         <span>Your note:</span>
-           <p style="white-space: pre-line;">{{ inputUser }}</p>
-           <br>
-           <input :type="typeNote" @keyup.enter="addNote" v-model="inputUser" placeholder="what are you thinking about"/>
-         <button v-on:click="typeNote('text')"> Text </button>
-         <button @click="typeNote('url')"> Image</button>
-         <button @click="typeNote('list')"> To Do</button>
+        <p style="white-space: pre-line;">{{ inputUser }}</p>
+        <br>
+        <input :type="typeNote" @keyup.enter="addNote" v-model="inputUser" :placeholder="placeHolder"/>
+        <div class="flex">
+				<template v-for="(type, idx) in types">
+					<button :class="setSelectedType(type.btn)" @click="changeType(idx)">{{type.btn}}</button> 
+				</template>
+		</div>
+        
+        
+        <!-- <component :is="component"/> -->
+        <!-- <button v-on:click="typeNote('text')"> Text </button> -->
     </section>
     
     `,
@@ -23,27 +31,126 @@ export default {
             inputUser: '',
             typeOfNote: '',
             userText: [],
+            component: 'note-text',
+            placeHolder: 'share your ideas'
         }
     },
-    computed: {      
+    computed: {
     },
     methods: {
         typeNote(typeClick) {
             this.newNote.type = typeClick
             this.typeOfNote = typeClick
-            console.log(typeClick, this.newNote.type, this.newNote);
-
+            // console.log(typeClick, this.newNote.type, this.newNote);
         },
         addNote() {
-            
-            
-            
-            this.newNote.info.text=this.inputUser
-            console.log(this.newNote);
-            this.$emit('add',this.newNote)
+            console.log(this.newNote.type, 'type of new-------');
+            switch (this.newNote.type) {
+                case "text":
+                    this.newNote.info.txt = this.inputUser
+                    break;
+                case "image":
+                    this.newNote.info.url = this.inputUser
+                    break;
+                case "todo":
+                    this.newNote.info.title = this.inputUser
+                    break;
+            }
+            this.$emit('add', this.newNote)
             this.newNote = noteService.getEmptyNote();
-			this.inputUser = '';
+            this.inputUser = '';
+            // this.newNote.info.txt = this.inputUser
+            // console.log(this.newNote);
         },
-        
+        getPlaceHolder() {
+            switch (this.newNote.type) {
+                case "text":
+                    this.placeHolder = 'share your ideas'
+                    // console.log('text in type mote');
+                    break;
+                case "img":
+                    this.placeHolder = 'enter img URL'
+                    break;
+                case "todo":
+                    this.placeHolder = 'what to do'
+                    break;
+            }
+        },
+        setSelectedType(type){
+            console.log(type);
+            return (this.newNote.type === type)
+        },
+        changeType(type) {
+            console.log(type,'typeeeeeee');
+            this.newNote.type = type;
+            switch (this.newNote.type) {
+                case "text":
+                    this.placeHolder = 'share your ideas'
+                    break;
+                case "image":
+                    this.placeHolder = 'enter img URL'
+                    break;
+                case "toDo":
+                    this.placeHolder = 'What to do?'
+                    break;
+            }
+		},
     },
+    components: {
+        noteText,
+        noteImg,
+        noteTodo,
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// <button :info="inputUser" @click="component= 'note-text'"> Text </button>
+//         <button :info="inputUser" @click="component= 'note-img'"> Image </button>
+//         <button :info="inputUser" @click="component= 'note-todo'"> To Do</button>

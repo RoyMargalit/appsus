@@ -1,7 +1,7 @@
 import noteList from '../apps/note/note-cmp/note-list.cmp.js'
 import noteText from '../apps/note/note-cmp/note-text.cmp.js'
 import noteImg from '../apps/note/note-cmp/note-img.cmp.js'
-import noteToDo from '../apps/note/note-cmp/note-to-do.cmp.js'
+import noteToDo from '../apps/note/note-cmp/note-todo.cmp.js'
 import noteAdd from '../apps/note/note-cmp/note-add.cmp.js'
 import { noteService } from '../apps/note/note-service/note-service.js'
 
@@ -10,15 +10,15 @@ export default {
     template: `
     <section v-if="notes" >
         <note-add :types="types" @add="addNote"></note-add>
-        <note-list :notes="notesToShow"></note-list>
+        <note-list  @remove="removeNote" :notes="notesToShow"></note-list>
     </section>
     `,
     data() {
         return {
             types: {
-                text: { field: 'text', placeholder: 'keep your ideas!' },
-                image: { field: 'url', placeholder: 'keep your images!' },
-                toDo: { field: 'text', placeholder: 'What to do next!' },
+                text: { sector: 'text',btn:'Txt', placeholder: 'keep your ideas!' },
+                image: { sector: 'img', btn:'Img', placeholder: 'keep your images!' },
+                toDo: { sector: 'todo',btn:'Todo', placeholder: 'What to do next!' },
             },
             cmp: null,
             notes: null,
@@ -29,8 +29,12 @@ export default {
         }
     },
     methods: {
-        addNote(newNote){
-            noteService.saveNote(newNote)
+        addNote(newNote) {
+            noteService.saveNote(newNote,newNote.type)
+        },
+
+        removeNote(noteId) {
+            noteService.remove(noteId)
         }
     },
     computed: {

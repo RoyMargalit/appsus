@@ -1,13 +1,21 @@
 
 export default {
-    props:['note'],
+    props:['info'],
     template:`
+
     <section>
-        <input placeholder = "enter text" v-model=""/>
-        <h2>note TEXT!!!</h2>
-        {{note}}
-        
+        <h2>note TEXT!!!</h2>       
     </section>
     
     `,
+    data(){
+        return{
+            info: this.info,
+        }
+    },
+    methods:{
+        placeholder(){
+            return 'input text'
+        }
+    }
 }

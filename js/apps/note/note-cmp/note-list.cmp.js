@@ -9,11 +9,19 @@ export default {
         <ul>
             <li v-for="currNote in notes " :key="currNote.id">
                 <note-preview :note="currNote"></note-preview>
+                <button @click="emitRemove(currNote.id)">x</button>
             </li>
         </ul>
     </section>
     
     `,
+    methods:{
+        emitRemove(noteId) {
+            console.log('note id', noteId);
+            // console.log('OK', carId);
+            this.$emit('remove', noteId)
+        },
+    },
 
     components:{
         notePreview,

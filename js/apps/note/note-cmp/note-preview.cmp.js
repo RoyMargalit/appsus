@@ -22,7 +22,7 @@ export default {
         }
     },
     created(){
-        console.log('preview');
+        // console.log('preview');
     }
        
 }
