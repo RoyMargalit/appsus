@@ -9,16 +9,9 @@ export default {
     props: ['notes', 'types'],
     template: `
     <section class="note-list">
-        <h2>Note list</h2>
         <component v-for="(note,idx) in notes" :is="'note-'+note.type"
 					:key="note.id" :note="note" @remove="emitRemove(note.id)">
-                </component>
-                <!-- <button @click="emitRemove(note.id)">x</button> -->
-        <!-- <ul>
-            <li v-for="currNote in notes " :key="currNote.id">
-                <note-preview :note="currNote"></note-preview>
-            </li>
-        </ul> -->
+        </component>
     </section>
     
     `,

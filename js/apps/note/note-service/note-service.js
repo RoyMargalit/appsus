@@ -22,7 +22,7 @@ function getNotes() {
 
 }
 function saveNote(currNote) {
-    console.log(currNote.type);
+    // console.log(currNote.type);
     console.log(currNote.info.txt);
     gNotes.push(currNote)
     utilService.storeToStorage(STORAGE_KEY, gNotes)     
@@ -87,10 +87,28 @@ function _createNotes() {
         {
             id: utilService.makeId(),
             type: "todo",//was: note-to-do
+            created:Date.now(),
             info: {
                 todos: [
-                    { txt: "Do that", doneAt: null },
-                    { txt: "Do this", doneAt: 187111111 }
+                    { txt: "Do that",doneAt: null },
+                    { txt: "Do this",doneAt: 187111111 }
+                ],
+
+            },
+            placeholder: ''
+
+        },
+        {
+            id: utilService.makeId(),
+            type: "todo",//was: note-to-do
+            created:Date.now(),
+            info: {
+                todos: [
+                    { txt: "get Milk",doneAt: null },
+                    { txt: "Help Dafna make her homework",doneAt: null },
+                    { txt: "Call grandma to wish a  happy birthday",doneAt: null },
+                    { txt: "Ask for a raise",doneAt: null },
+                    { txt: "Shower before your date",doneAt: null }
                 ],
 
             },
@@ -100,12 +118,22 @@ function _createNotes() {
     ]
 }
 
+
+// id: utilService.makeId(),
+// type: "todo",//was: note-to-do
+// created:Date.now(),
+// info: {
+//     todos: [
+//         { txt: "Do that",doneAt: null },
+//         { txt: "Do this",doneAt: 187111111 }
+//     ],
+
 function getEmptyNote() {
     return {
         id: utilService.makeId(),
         type: 'text',
         isPinned: false,
-        info: {txt:'',url:'',todos:[{txt:''}]}
+        info: {txt:'',url:'',todos:[{txt:'',doneAt:null}]}
 
     }
 }

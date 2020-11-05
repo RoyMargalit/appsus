@@ -32,6 +32,7 @@ export default {
     },
     methods: {
         addNote(newNote) {
+            console.log('new note',newNote,newNote.type);
             noteService.saveNote(newNote,newNote.type)
         },
 

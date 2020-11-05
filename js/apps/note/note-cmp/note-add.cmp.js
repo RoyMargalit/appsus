@@ -14,7 +14,7 @@ export default {
         <pre style="white-space: pre-line;">{{ inputUser }}</pre>
         <br>
         <input  @keyup.enter="addNote" v-model="inputUser" :placeholder="placeHolder"/>
-        <template v-for="(type, idx) in types" >
+        <template v-for="(type, idx) in types">
             <button :class="setSelectedType(type.btn)" @click="changeType(idx)">{{type.btn}}</button> 
         </template>
     </section>
@@ -43,6 +43,7 @@ export default {
                     this.newNote.info.url = this.inputUser
                     break;
                 case "todo":
+                    console.log(this.newNote)
                     this.newNote.info.todos.txt = this.inputUser
                     break;
                 case "video":
