@@ -8,31 +8,37 @@ export default {
     <section>
         <!-- <h2>mail-preview </h2> -->
         <p :class="mailRead"  @click="getMailDetails" >subject {{mail.subject}} </p>
-        <button @click="isRead = !isRead">Read</button>
+        <!-- <button v-if="!isRead" @click="readMark">Read</button>
+        <button v-if="isRead" @click="readMark">Unread</button> -->
+        <button v-if="!mail.isRead"  @click="readMark">Read</button>
+        <button v-if="mail.isRead"  @click="readMark">Unread</button>
+        <!-- <button v-if="!isRead" @click="isRead = !isRead">Read</button>
+        <button v-if="isRead" @click="isRead = !isRead">Unread</button> -->
     </section>
     `,
     data(){
         return{
             subject:null,
             body:null,
-            isRead:true,
+            isRead:false,
             sentAt:null
         }
     }, 
     methods: {
         getMailDetails() {
-            // console.log('gettt details',this.mail.id);
-            // console.log('gettt details',this.mail);
-            // eventBus.$emit('getDetails', this.mail.id)
-            // eventBus.$emit('getDetails', this.mail)
             this.$router.push('/mail/'  + this.mail.id)
-            // console.log(book);
-            // this.$emit('back', book)
+        },
+        readMark(){
+            // this.isRead = !this.isRead
+            // this.mail.isRead = this.isRead
+            this.mail.isRead = !this.mail.isRead
+            this.$emit('mailRead', this.mail)
+            console.log(this.mail);
         }
     },
     computed: {
         mailRead() {
-            return {read: this.isRead}
+            return {read: this.mail.isRead}
         }
     }
 }

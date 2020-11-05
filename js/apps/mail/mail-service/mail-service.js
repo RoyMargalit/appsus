@@ -2,7 +2,9 @@ import { utilService } from '../../../service/util-service.js'
 
 export const mailService = {
     getMails,
-    getById
+    getById,
+    remove,
+    save
 
 }
 
@@ -20,16 +22,21 @@ function getMails() {
     }
     return Promise.resolve(gMails)
 }
-// function getMails() {
-//     var mails = utilService.loadFromStorage(STORAGE_KEY)
-//     if (!mails || !mails.length) {
-//         _createMails()
-//         mails = gMails
-//         utilService.storeToStorage(STORAGE_KEY, mails)
 
-//     }
-//     return Promise.resolve(mails)
-// }
+function save(mail) {
+    if(mail.id){
+        const mailIdx = gMails.findIndex(currMail=>mail.id===currMail.id)
+        gMails.splice(mailIdx,1,mail)
+        utilService.storeToStorage(STORAGE_KEY, gMails)
+}
+}
+
+function remove(mailId) {
+    const idx = gMails.findIndex(mail => mail.id === mailId);
+    gMails.splice(idx, 1);
+    utilService.storeToStorage(STORAGE_KEY, gMails)
+    // return Promise.resolve()
+}
 
 function _createMail(subject, body) {
     var mail =

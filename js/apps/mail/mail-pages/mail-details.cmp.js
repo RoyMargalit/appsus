@@ -10,6 +10,7 @@ export default {
        <h1>mail details</h1>
        <h2 >{{mail.subject}}</h2>
        <p >{{mail.body}}</p>
+       <button @click="deleteMail(mail.id)" >Delete</button>
     
     </section>
     `,
@@ -19,7 +20,12 @@ export default {
         }
     },
     methods: {
-
+        deleteMail(mailId){
+            console.log(mailId);
+            mailService.remove(mailId)
+            this.$router.push('/mail')
+            // this.$emit('delete', mailId)
+        }
     },
     computed: {
     
