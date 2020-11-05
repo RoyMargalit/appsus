@@ -10,15 +10,15 @@ export default {
     template: `
     <section v-if="notes" >
         <note-add :types="types" @add="addNote"></note-add>
-        <note-list  @remove="removeNote" :notes="notesToShow"></note-list>
+        <note-list  @remove="removeNote"  :notes="notesToShow" :types="types"></note-list>
     </section>
     `,
     data() {
         return {
             types: {
                 text: { sector: 'text',btn:'Txt', placeholder: 'keep your ideas!' },
-                image: { sector: 'img', btn:'Img', placeholder: 'keep your images!' },
-                toDo: { sector: 'todo',btn:'Todo', placeholder: 'What to do next!' },
+                img: { sector: 'img', btn:'Img', placeholder: 'keep your images!' },
+                todo: { sector: 'todo',btn:'todo', placeholder: 'What to do next!' },
             },
             cmp: null,
             notes: null,

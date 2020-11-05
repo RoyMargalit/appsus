@@ -1,6 +1,6 @@
 
 export default {
-    props:['info'],
+    // props:['info'],
     template:`
 
     <section>
@@ -10,7 +10,7 @@ export default {
     `,
     data(){
         return{
-            info: this.info,
+            // info: this.info,
         }
     },
     methods:{

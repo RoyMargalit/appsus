@@ -21,11 +21,11 @@ function getNotes() {
     return Promise.resolve(gNotes)
 
 }
-function saveNote(currNote,info) {
+function saveNote(currNote) {
     console.log(currNote.type);
     console.log(currNote.info.txt);
     gNotes.push(currNote)
-    utilService.storeToStorage(STORAGE_KEY, gNotes)
+    utilService.storeToStorage(STORAGE_KEY, gNotes)     
     console.log(gNotes)
     return Promise.resolve(gNotes)
 
@@ -122,7 +122,7 @@ var gNotes = [
     },
     {
         id: utilService.makeId(),
-        type: "note-img",
+        type: "img",
         info: {
             url: "http://some-img/me",
             title: "Me playing Mi"
@@ -148,3 +148,32 @@ var gNotes = [
 
     }
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function saveNote(currNote) {
+//     console.log(currNote.type);
+//     console.log(currNote.info.txt);
+//     gNotes.push(currNote)
+//     utilService.storeToStorage(STORAGE_KEY, gNotes)
+//     console.log(gNotes)
+//     return Promise.resolve(gNotes)
+
+// }

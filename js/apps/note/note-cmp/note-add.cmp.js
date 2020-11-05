@@ -62,35 +62,21 @@ export default {
             // this.newNote.info.txt = this.inputUser
             // console.log(this.newNote);
         },
-        getPlaceHolder() {
-            switch (this.newNote.type) {
-                case "text":
-                    this.placeHolder = 'share your ideas'
-                    // console.log('text in type mote');
-                    break;
-                case "img":
-                    this.placeHolder = 'enter img URL'
-                    break;
-                case "todo":
-                    this.placeHolder = 'what to do'
-                    break;
-            }
-        },
         setSelectedType(type){
-            console.log(type);
+            // console.log(type);
             return (this.newNote.type === type)
         },
         changeType(type) {
-            console.log(type,'typeeeeeee');
+            // console.log(type,'typeeeeeee');
             this.newNote.type = type;
             switch (this.newNote.type) {
                 case "text":
                     this.placeHolder = 'share your ideas'
                     break;
-                case "image":
-                    this.placeHolder = 'enter img URL'
+                case "img":
+                    this.placeHolder = 'enter image URL'
                     break;
-                case "toDo":
+                case "todo":
                     this.placeHolder = 'What to do?'
                     break;
             }

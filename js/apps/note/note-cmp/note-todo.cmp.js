@@ -1,7 +1,7 @@
 
 
 export default {
-    props:['info'],
+    // props:['info'],
     template:`
     <section>
         <h2>note To DO!!!</h2>

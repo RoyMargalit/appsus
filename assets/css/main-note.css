@@ -1,0 +1,23 @@
+
+.note-preview{
+    background-color: rgb(247, 212, 212);
+}
+
+.note-list{
+    background-color: rgb(225, 245, 206);
+    border: 1px solid #292929;
+}
+.note-list ul{
+    background-color: rgb(225, 245, 206);
+    list-style: none;
+}
+
+.note-add{
+    background-color: coral;
+}
+.note-add input {
+    padding: 10px;
+}
+.note-add button{
+    padding: 10px 5px;
+}
