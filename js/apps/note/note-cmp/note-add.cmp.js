@@ -3,25 +3,20 @@ import { noteService } from '../note-service/note-service.js'
 import noteText from '../note-cmp/note-text.cmp.js'
 import noteImg from '../note-cmp/note-img.cmp.js'
 import noteTodo from '../note-cmp/note-todo.cmp.js'
+import noteVideo from '../note-cmp/note-video.cmp.js'
 
 export default {
     props: ['types'],
     template: `
     <section class="note-add">
-        <h2>note add!!!</h2>
-        <span>Your note:</span>
-        <p style="white-space: pre-line;">{{ inputUser }}</p>
+        <h2>The billboard</h2>
+        <h3>Your place for safe keeping: </h3>
+        <pre style="white-space: pre-line;">{{ inputUser }}</pre>
         <br>
-        <input :type="typeNote" @keyup.enter="addNote" v-model="inputUser" :placeholder="placeHolder"/>
-        <div class="flex">
-				<template v-for="(type, idx) in types">
-					<button :class="setSelectedType(type.btn)" @click="changeType(idx)">{{type.btn}}</button> 
-				</template>
-		</div>
-        
-        
-        <!-- <component :is="component"/> -->
-        <!-- <button v-on:click="typeNote('text')"> Text </button> -->
+        <input  @keyup.enter="addNote" v-model="inputUser" :placeholder="placeHolder"/>
+        <template v-for="(type, idx) in types" >
+            <button :class="setSelectedType(type.btn)" @click="changeType(idx)">{{type.btn}}</button> 
+        </template>
     </section>
     
     `,
@@ -38,36 +33,30 @@ export default {
     computed: {
     },
     methods: {
-        typeNote(typeClick) {
-            this.newNote.type = typeClick
-            this.typeOfNote = typeClick
-            // console.log(typeClick, this.newNote.type, this.newNote);
-        },
         addNote() {
             console.log(this.newNote.type, 'type of new-------');
             switch (this.newNote.type) {
                 case "text":
                     this.newNote.info.txt = this.inputUser
                     break;
-                case "image":
+                case "img":
                     this.newNote.info.url = this.inputUser
                     break;
                 case "todo":
-                    this.newNote.info.title = this.inputUser
+                    this.newNote.info.todos.txt = this.inputUser
+                    break;
+                case "video":
+                    this.newNote.info.url = this.inputUser
                     break;
             }
             this.$emit('add', this.newNote)
             this.newNote = noteService.getEmptyNote();
             this.inputUser = '';
-            // this.newNote.info.txt = this.inputUser
-            // console.log(this.newNote);
         },
         setSelectedType(type){
-            // console.log(type);
             return (this.newNote.type === type)
         },
         changeType(type) {
-            // console.log(type,'typeeeeeee');
             this.newNote.type = type;
             switch (this.newNote.type) {
                 case "text":
@@ -79,6 +68,9 @@ export default {
                 case "todo":
                     this.placeHolder = 'What to do?'
                     break;
+                case "video":
+                    this.placeHolder = 'enter a Video'
+                    break;
             }
 		},
     },
@@ -86,6 +78,7 @@ export default {
         noteText,
         noteImg,
         noteTodo,
+        noteVideo
     }
 }
 

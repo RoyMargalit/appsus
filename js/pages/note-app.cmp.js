@@ -3,6 +3,7 @@ import noteText from '../apps/note/note-cmp/note-text.cmp.js'
 import noteImg from '../apps/note/note-cmp/note-img.cmp.js'
 import noteToDo from '../apps/note/note-cmp/note-todo.cmp.js'
 import noteAdd from '../apps/note/note-cmp/note-add.cmp.js'
+import noteVideo from '../apps/note/note-cmp/note-video.cmp.js'
 import { noteService } from '../apps/note/note-service/note-service.js'
 
 export default {
@@ -19,6 +20,7 @@ export default {
                 text: { sector: 'text',btn:'Txt', placeholder: 'keep your ideas!' },
                 img: { sector: 'img', btn:'Img', placeholder: 'keep your images!' },
                 todo: { sector: 'todo',btn:'todo', placeholder: 'What to do next!' },
+                video: { sector: 'video',btn:'video', placeholder: 'Upload a video!' }
             },
             cmp: null,
             notes: null,
@@ -62,7 +64,8 @@ export default {
         noteText,
         noteImg,
         noteToDo,
-        noteAdd
+        noteAdd,
+        noteVideo
     }
 
 }

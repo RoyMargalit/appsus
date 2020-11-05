@@ -55,10 +55,19 @@ function _createNotes() {
         },
         {
             id: utilService.makeId(),
-            type: "text",
+            type: "video",
             isPinned: true,
             info: {
-                txt: "Fullstack Me Baby!"
+                url: "https://i.gifer.com/19Vg.gif"
+            },
+            placeholder: ''
+        },
+        {
+            id: utilService.makeId(),
+            type: "video",
+            isPinned: true,
+            info: {
+                url: "https://www.youtube.com/embed/eI4an8aSsgw"
             },
             placeholder: ''
         },
@@ -66,7 +75,7 @@ function _createNotes() {
             id: utilService.makeId(),
             type: "img",//was: note-img
             info: {
-                url: "http://some-img/me",
+                url: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg",
                 title: "Me playing Mi"
             },
             style: {
@@ -79,7 +88,6 @@ function _createNotes() {
             id: utilService.makeId(),
             type: "todo",//was: note-to-do
             info: {
-                label: "How was it:",
                 todos: [
                     { txt: "Do that", doneAt: null },
                     { txt: "Do this", doneAt: 187111111 }
@@ -97,7 +105,7 @@ function getEmptyNote() {
         id: utilService.makeId(),
         type: 'text',
         isPinned: false,
-        info: {txt:'',url:'',title:''}
+        info: {txt:'',url:'',todos:[{txt:''}]}
 
     }
 }
@@ -105,7 +113,7 @@ function getEmptyNote() {
 var gNotes = [
     {
         id: utilService.makeId(),
-        type: "note-text",
+        type: "text",
         isPinned: true,
         info: {
             txt: "Fullstack Me Baby!"
@@ -113,12 +121,11 @@ var gNotes = [
     },
     {
         id: utilService.makeId(),
-        type: "note-text",
+        type: "text",
         isPinned: true,
         info: {
-            txt: "Fullstack Me Baby!"
+            txt: "HOORAY AND WELCOME!"
         },
-        placeholder: ''
     },
     {
         id: utilService.makeId(),
@@ -130,22 +137,18 @@ var gNotes = [
         style: {
             backgroundColor: "#00d"
         },
-        placeholder: ''
 
     },
     {
         id: utilService.makeId(),
-        type: "note-to-do",
+        type: "todo",
         info: {
             label: "How was it:",
             todos: [
                 { txt: "Do that", doneAt: null },
                 { txt: "Do this", doneAt: 187111111 }
             ],
-
         },
-        placeholder: ''
-
     }
 ]
 
