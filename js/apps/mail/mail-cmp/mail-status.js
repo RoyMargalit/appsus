@@ -7,6 +7,7 @@ export default {
 
         <p>mail status</p>
         <p> {{mailsReadNum}} </p>
+        <!-- <p> {{mailsRead}} </p> -->
        
     </section>
     `,
@@ -17,7 +18,8 @@ export default {
     }, 
     methods: {
         // mailsReadNum(){
-        //     this.mailsRead = mailService.countMailRead()
+        //     mailService.countMailRead()
+        //         .then (num => this.mailsRead = num)
         //     // return mailService.countMailRead()
         // }
     },
@@ -25,5 +27,8 @@ export default {
         mailsReadNum(){
             return mailService.countMailRead()
         }
+    },
+    created() {
+        
     }
 }

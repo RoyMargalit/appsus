@@ -1,7 +1,16 @@
 
 .mail-list {
     /* list-style: none; */
-    background-color: lightgrey
+    background-color: lightgrey;
+    flex-basis: 80%;
+    /* flex-grow: 4; */
+    height: 100vh;
+}
+
+.mail-send {
+    background-color: white ;
+    flex-basis: 80%;
+    height: 100vh;
 }
 
 .mail-list li {
@@ -14,7 +23,7 @@
 .mail-list li p {
     /* height: 100%;
     width: 100%; */
-    padding: 5px;
+    /* padding: 5px; */
 }
 
 .read {
@@ -22,10 +31,10 @@
 }
 
 .mail-details {
+    display: flex;
+    height: 100vh;
     background-color: white;
-    max-width: 700px;
-    margin-inline-end: 200px;
-    margin-inline-start: 200px;
+    flex-basis: 80%;
     text-align: center;
 }
 
@@ -36,4 +45,29 @@
 
 .mail-status {
     background-color: skyblue;
+}
+
+.mail-app {
+    display: flex;
+    
+}
+
+.mail-send {
+    display: flex;
+}
+
+.mail-msg {
+  
+    height: 100vh;
+    background-color: white;
+    flex-basis: 80%;
+    text-align: center;
+}
+
+.mail-side-nav {
+    display: flex;
+    flex-direction: column;
+    background-color: slategrey;
+    flex-basis: 20%;
+
 }

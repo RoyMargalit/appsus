@@ -6,7 +6,6 @@ export const mailService = {
     remove,
     save,
     countMailRead
-
 }
 
 const STORAGE_KEY = 'mailDB'
@@ -36,6 +35,7 @@ function save(mail) {
     if (mail.id) {
         const mailIdx = gMails.findIndex(currMail => mail.id === currMail.id)
         gMails.splice(mailIdx, 1, mail)
+        console.log(gMails);
         utilService.storeToStorage(STORAGE_KEY, gMails)
     }
 }
