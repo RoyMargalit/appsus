@@ -8,15 +8,20 @@ import noteVideo from '../note-cmp/note-video.cmp.js'
 export default {
     props: ['types'],
     template: `
-    <section class="note-add">
-        <h2>The billboard</h2>
-        <h3>Your place for safe keeping: </h3>
-        <pre style="white-space: pre-line;">{{ inputUser }}</pre>
-        <br>
-        <input  @keyup.enter="addNote" v-model="inputUser" :placeholder="placeHolder"/>
-        <template v-for="(type, idx) in types">
-            <button :class="setSelectedType(type.btn)" @click="changeType(idx)">{{type.btn}}</button> 
-        </template>
+    <section class="note-add ">
+        <div class="billboard ">
+                <h2>Your</h2><h2> Billboard</h2>
+
+            <!-- <h3>Your place for safe keeping: </h3> -->
+            <pre style="white-space: pre-line;">{{ inputUser }}</pre>
+            <br>
+            <input  @keyup.enter="addNote" v-model="inputUser" :placeholder="placeHolder"/>
+                <div class="type-btn">
+                    <template v-for="(type, idx) in types">
+                        <button :class="setSelectedType(type.btn)" @click="changeType(idx)">{{type.btn}}</button> 
+                    </template>
+                </div>
+        </div>
     </section>
     
     `,
@@ -54,7 +59,7 @@ export default {
             this.newNote = noteService.getEmptyNote();
             this.inputUser = '';
         },
-        setSelectedType(type){
+        setSelectedType(type) {
             return (this.newNote.type === type)
         },
         changeType(type) {
@@ -73,7 +78,7 @@ export default {
                     this.placeHolder = 'enter a Video'
                     break;
             }
-		},
+        },
     },
     components: {
         noteText,

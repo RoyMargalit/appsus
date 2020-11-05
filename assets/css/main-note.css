@@ -25,12 +25,38 @@
     position: relative;
 
 }
-
+/* optional the flex */
 .note-add{
+    /* width: 980px; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
     background-color: rgb(243, 207, 194);
-    padding: 20px;
+    padding: 20px;  
+}
+.billboard{
+    display: flex;
+    text-align: center;
+    margin:0 auto;
+    max-width: 980px;
+    align-items: center;
+    justify-content: center;
+
+}
+.type-btn{
+    display: flex;
+    color: blue;
+    background-color: rgb(218, 21, 21);
+}
+.note-add h2{
+    padding-right: 10px;
+    /* font-size: 20px; */
+    display: flex;
+    flex-direction: column;
 }
 .note-add input {
+
     padding: 10px;
     width: 600px;
     border-radius: 20px;
@@ -40,13 +66,13 @@
     /* margin:; */
 }
 .note-text{
+    text-align: center;
     background-color: #e7dc5f;
     width: 500px;
     padding-top: 10px;
     margin-top: 5px;
     border-radius: 5px;
     position: relative;
-    
 }
 
 .note-img{
@@ -71,4 +97,3 @@
     padding-top: 10px;
     margin-top: 5px;
 }
-
