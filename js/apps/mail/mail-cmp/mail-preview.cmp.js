@@ -21,9 +21,10 @@ export default {
     }, 
     methods: {
         getMailDetails() {
-            console.log(this.mail.id);
+            // console.log('gettt details',this.mail.id);
+            // console.log('gettt details',this.mail);
             // eventBus.$emit('getDetails', this.mail.id)
-            eventBus.$emit('getDetails', this.mail)
+            // eventBus.$emit('getDetails', this.mail)
             this.$router.push('/mail/'  + this.mail.id)
             // console.log(book);
             // this.$emit('back', book)

@@ -19,3 +19,11 @@
 .read {
     background-color: rgb(165, 163, 163);
 }
+
+.mail-details {
+    background-color: white;
+    max-width: 700px;
+    margin-inline-end: 200px;
+    margin-inline-start: 200px;
+    text-align: center;
+}

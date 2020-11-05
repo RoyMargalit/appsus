@@ -7,10 +7,10 @@ import { mailService } from '../apps/mail/mail-service/mail-service.js'
 
 export default {
     template: `
-    <section>
+    <section class="mail-app">
         <h2>mail</h2>
         <mail-list :mails="mailsToShow"></mail-list>
-        <!-- {{mails}} -->
+        {{mails}}
     </section>
     `,
     data() {
@@ -29,8 +29,7 @@ export default {
     created() {
         console.log('created');
         mailService.getMails()
-            .then(mails => this.mails = mails)
-            .then(console.log('this mails', this.mails))
+        .then(mails => this.mails = mails)
     },
     components: {
         mailList,

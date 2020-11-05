@@ -1,14 +1,15 @@
 
 import { eventBus } from '../../../service/event-bus-service.js'
-
+import {mailService} from '../mail-service/mail-service.js'
 
 export default {
     // props:[],
     name: 'mailDetails',
     template: `
-    <section>
+    <section v-if="mail"  class="mail-details">
        <h1>mail details</h1>
-       <h2>{{mail}}</h2>
+       <h2 >{{mail.subject}}</h2>
+       <p >{{mail.body}}</p>
     
     </section>
     `,
@@ -21,24 +22,12 @@ export default {
 
     },
     computed: {
-    //    showDetails(){
-    //        return this.mail !== null
-    //    }
+    
     },
     created() {
-        eventBus.$on('getDetails', mail => {
-            console.log(this.mail);
-            this.mail = mail;
-            console.log(this.mail);
-                console.log(mail);
-                
-        })
+     const id = this.$route.params.mailId
+     mailService.getById(id)
+        .then(mail => this.mail = mail)
     }
     
 }
-
-// emitBackToList(book) {
-//     this.$router.push('/book')
-//     console.log(book);
-//     this.$emit('back', book)
-// },
