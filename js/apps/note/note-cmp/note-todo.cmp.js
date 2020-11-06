@@ -3,7 +3,7 @@ import noteActions from '../note-cmp/note-actions.cmp.js'
 export default {
     props: ['note'],
     template: `
-    <section class="note-todo" :style="{'background-color': note.styles.backgroundColor }">>
+    <section class="note-todo" :style="{'background-color': note.styles.backgroundColor }">
         <button class="delete-cmp" @click="emitRemove(note.id)" >X</button>
         <h2>To Do</h2>
             <ul>
