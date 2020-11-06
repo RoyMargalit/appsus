@@ -1,10 +1,10 @@
-
+import noteActions from '../note-cmp/note-actions.cmp.js' 
 
 export default {
     props: ['note'],
     template: `
-    <section class="note-todo">
-    <button class="delete-cmp" @click="emitRemove(note.id)" >X</button>
+    <section class="note-todo" :style="{'background-color': note.styles.backgroundColor }">>
+        <button class="delete-cmp" @click="emitRemove(note.id)" >X</button>
         <h2>To Do</h2>
             <ul>
 				<li v-for="(item,idx) in note.info.todos">
@@ -13,7 +13,9 @@ export default {
                             {{item.txt}}
                     </label>
 				</li>
-			</ul>
+            </ul>
+            <note-actions :note="note" ></note-actions>
+            
     </section>
     
     `,
@@ -27,5 +29,8 @@ export default {
             this.$emit(change)
 
         }
+    },
+    components:{
+        noteActions
     }
 }

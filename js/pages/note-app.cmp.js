@@ -5,6 +5,12 @@ import noteToDo from '../apps/note/note-cmp/note-todo.cmp.js'
 import noteAdd from '../apps/note/note-cmp/note-add.cmp.js'
 import noteVideo from '../apps/note/note-cmp/note-video.cmp.js'
 import { noteService } from '../apps/note/note-service/note-service.js'
+import {
+	eventBus, EVENT_NOTE_ADDED, EVENT_NOTE_PINNED,
+	EVENT_NOTE_MARKED, EVENT_NOTE_STYLED, EVENT_NOTE_EDITING, EVENT_NOTE_UPDATED,
+	EVENT_NOTE_CLONED, EVENT_NOTE_DELETED, EVENT_LIST_NOTE_STATUS_CHANGED, EVENT_NOTE_FILTERED
+} from '../service/event-bus-service.js'
+
 
 export default {
     name: 'note-app',
@@ -38,7 +44,10 @@ export default {
 
         removeNote(noteId) {
             noteService.remove(noteId)
-        }
+        },
+        styleNote(noteId, bgColor) {
+			noteService.styleNote(noteId, bgColor);
+		},
     },
     computed: {
         notesToShow() {
@@ -58,6 +67,16 @@ export default {
         // .then(console.log('this notes', this.notes))
         // this.noteToEdit = noteService.getEmptyNote()
         //     .then(note => this.noteToEdit = note)
+        eventBus.$on(EVENT_NOTE_ADDED, (note) => this.addNote(note));
+		// eventBus.$on(EVENT_NOTE_PINNED, noteId => this.pinNote(noteId));
+		// eventBus.$on(EVENT_NOTE_MARKED, noteId => this.markNote(noteId));
+		eventBus.$on(EVENT_NOTE_STYLED, (noteId, bgColor) => this.styleNote(noteId, bgColor));
+		// eventBus.$on(EVENT_NOTE_EDITING, noteId => this.editNote(noteId));
+		eventBus.$on(EVENT_NOTE_UPDATED, (note, data) => this.addNote(note, data));
+		// eventBus.$on(EVENT_NOTE_CLONED, noteId => this.cloneNote(noteId));
+		eventBus.$on(EVENT_NOTE_DELETED, noteId => this.removeNote(noteId));
+		// eventBus.$on(EVENT_LIST_NOTE_STATUS_CHANGED, (noteId, listIdx) => this.updateListNoteStatus(noteId, listIdx));
+		// eventBus.$on(EVENT_NOTE_FILTERED, filter => this.updateFilter(filter));
     },
 
     components: {

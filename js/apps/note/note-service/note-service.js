@@ -4,7 +4,9 @@ export const noteService = {
     getNotes,
     getEmptyNote,
     saveNote,
-    remove
+    remove,
+    styleNote,
+    getNoteById
 }
 const STORAGE_KEY = 'noteDB'
 
@@ -21,15 +23,6 @@ function getNotes() {
     return Promise.resolve(gNotes)
 
 }
-function saveNote(currNote) {
-    // console.log(currNote.type);
-    console.log(currNote.info.txt);
-    gNotes.push(currNote)
-    utilService.storeToStorage(STORAGE_KEY, gNotes)     
-    console.log(gNotes)
-    return Promise.resolve(gNotes)
-
-}
 
 function remove(noteId) {
     const idx = gNotes.findIndex(note => note.id === noteId);
@@ -40,7 +33,10 @@ function remove(noteId) {
 }
 
 
-
+function getNoteById(id) {
+	var note = gNotes.find(note => note.id === id);
+	return Promise.resolve(note);
+}
 
 
 function _createNotes() {
@@ -49,6 +45,11 @@ function _createNotes() {
             id: utilService.makeId(),
             type: "text",
             isPinned: true,
+            isMarked: false,
+            isEdit: false,
+            styles: {
+                backgroundColor: '#fff'
+            },
             info: {
                 txt: "Fullstack Me Baby!"
             }
@@ -57,6 +58,11 @@ function _createNotes() {
             id: utilService.makeId(),
             type: "video",
             isPinned: true,
+            isMarked: false,
+            isEdit: false,
+            styles: {
+                backgroundColor: '#fff'
+            },
             info: {
                 url: "https://i.gifer.com/19Vg.gif"
             },
@@ -66,6 +72,11 @@ function _createNotes() {
             id: utilService.makeId(),
             type: "video",
             isPinned: true,
+            isMarked: false,
+            isEdit: false,
+            styles: {
+                backgroundColor: '#fff'
+            },
             info: {
                 url: "https://www.youtube.com/embed/eI4an8aSsgw"
             },
@@ -73,13 +84,16 @@ function _createNotes() {
         },
         {
             id: utilService.makeId(),
-            type: "img",//was: note-img
+            type: "img",
+            isPinned: true,
+            isMarked: false,
+            isEdit: false,
+            styles: {
+                backgroundColor: '#fff'
+            },
             info: {
                 url: "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg",
                 title: "Me playing Mi"
-            },
-            style: {
-                backgroundColor: "#00d"
             },
             placeholder: ''
 
@@ -87,11 +101,17 @@ function _createNotes() {
         {
             id: utilService.makeId(),
             type: "todo",//was: note-to-do
-            created:Date.now(),
+            created: Date.now(),
+            isPinned: true,
+            isMarked: false,
+            isEdit: false,
+            styles: {
+                backgroundColor: '#fff'
+            },
             info: {
                 todos: [
-                    { txt: "Do that",doneAt: null },
-                    { txt: "Do this",doneAt: 187111111 }
+                    { txt: "Do that", doneAt: null },
+                    { txt: "Do this", doneAt: 187111111 }
                 ],
 
             },
@@ -101,14 +121,20 @@ function _createNotes() {
         {
             id: utilService.makeId(),
             type: "todo",//was: note-to-do
-            created:Date.now(),
+            created: Date.now(),
+            isPinned: true,
+            isMarked: false,
+            isEdit: false,
+            styles: {
+                backgroundColor: '#fff'
+            },
             info: {
                 todos: [
-                    { txt: "get Milk",doneAt: null },
-                    { txt: "Help Dafna make her homework",doneAt: null },
-                    { txt: "Call grandma to wish a  happy birthday",doneAt: null },
-                    { txt: "Ask for a raise",doneAt: null },
-                    { txt: "Shower before your date",doneAt: null }
+                    { txt: "get Milk", doneAt: null },
+                    { txt: "Help Dafna make her homework", doneAt: null },
+                    { txt: "Call grandma to wish a  happy birthday", doneAt: null },
+                    { txt: "Ask for a raise", doneAt: null },
+                    { txt: "Shower before your date", doneAt: null }
                 ],
 
             },
@@ -133,7 +159,12 @@ function getEmptyNote() {
         id: utilService.makeId(),
         type: 'text',
         isPinned: false,
-        info: {txt:'',url:'',todos:[{txt:'',doneAt:null}]}
+        isMarked: false,
+        isEdit: false,
+        styles: {
+            backgroundColor: '#fff'
+        },
+        info: { txt: '', url: '', todos: [{ txt: '', doneAt: null }] }
 
     }
 }
@@ -181,9 +212,34 @@ var gNotes = [
 ]
 
 
+function styleNote(id, bgColor) {
+    console.log('note id service:',id,'color',bgColor);
+	return getNoteById(id)
+		.then(note => {
+            note.styles.backgroundColor = bgColor;
+            console.log(note);
+            // _saveNotesToStorage(note);
+            saveNoteToStorage()
+		});
+}
+
+function saveNote(currNote) {
+    // console.log(currNote.type);
+    console.log(currNote.info.txt);
+    gNotes.push(currNote)
+    utilService.storeToStorage(STORAGE_KEY, gNotes)
+    console.log(gNotes)
+    return Promise.resolve(gNotes)
+
+}
 
 
 
+
+
+function saveNoteToStorage() {
+	utilService.storeToStorage(STORAGE_KEY, gNotes);
+}
 
 
 

@@ -13,7 +13,7 @@ export default {
                 <h2>Your</h2><h2> Billboard</h2>
 
             <!-- <h3>Your place for safe keeping: </h3> -->
-            <pre style="white-space: pre-line;">{{ inputUser }}</pre>
+            <!-- <pre style="white-space: pre-line;">{{ inputUser }}</pre> -->
             <br>
             <input  @keyup.enter="addNote" v-model="inputUser" :placeholder="placeHolder"/>
                 <div class="type-btn">
