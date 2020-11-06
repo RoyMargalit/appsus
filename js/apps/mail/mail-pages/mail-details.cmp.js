@@ -8,7 +8,7 @@ export default {
     name: 'mailDetails',
     template: `
     <section v-if="mail"  class="mail-details">
-        <mail-side-nav></mail-side-nav>
+        <mail-side-nav class="mail-side-nav"></mail-side-nav>
         <div class="details"> 
             <!-- <h1>mail details</h1> -->
             <button class="delet-btn-details" @click="deleteMail(mail.id)" >Delete</button>

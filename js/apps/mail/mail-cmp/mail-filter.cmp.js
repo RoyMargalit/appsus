@@ -2,17 +2,17 @@
 
 export default {
     template: `
-        <section class="book-filter">
-        <h2>Filter mails</h2>
+        <section class="mail-filter">
+        <!-- <h2>Filter mails</h2> -->
         <form @submit.prevent="emitFilter" >
-        <input type="text" v-model="filterBy.byTitle"  placeholder="Search here"/>
+        <input type="text" v-model="filterBy"  placeholder="Search"/>
         
         </form>
         </section>
     `,
     data() {
         return {
-            filterBy : {byTitle: '', fromPrice: -Infinity, toPrice: Infinity }
+            filterBy: ''
         }
     },
     methods: {

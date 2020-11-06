@@ -3,6 +3,7 @@ import { mailService } from '../apps/mail/mail-service/mail-service.js'
 import mailDetails from '../apps/mail/mail-pages/mail-details.cmp.js'
 import mailStatus from '../apps/mail/mail-cmp/mail-status.js'
 import mailSideNav from '../apps/mail/mail-cmp/mail-side-nav.cmp.js'
+import mailFilter from '../apps/mail/mail-cmp/mail-filter.cmp.js'
 // import mailSend from '../apps/mail/mail-cmp/mail-send.cmp.js'
 
 
@@ -13,6 +14,7 @@ export default {
     <section class="mail-app">
         <!-- <h2>mail</h2> -->
         <!-- <mail-status></mail-status> -->
+        <mail-filter @doFilter="setFilter" ></mail-filter>
         <mail-side-nav></mail-side-nav>
         <!-- <mail-send v-if="sendMail"></mail-send> -->
         <mail-list v-if="!sendMail" @delete="deleteMail" :mails="mailsToShow"></mail-list>
@@ -31,12 +33,20 @@ export default {
     computed: {
         mailsToShow() {
             if (!this.filterBy) return this.mails;
+            const txt = this.filterBy.toLowerCase();
+            console.log(this.mails);
+            return this.mails.filter(mail => mail.name.toLowerCase().includes(txt) || 
+            mail.subject.toLowerCase().includes(txt) ||  mail.body.toLowerCase().includes(txt))
         },
     },
     methods: {
         deleteMail(mailId){
             console.log('in app:',mailId);
             mailService.remove(mailId)
+        },
+        setFilter(filterBy) {
+            console.log(filterBy);
+            this.filterBy = filterBy
         },
         // marekdReadMail(mail) {
         //     mailService.save(mail)
@@ -52,6 +62,7 @@ export default {
         mailDetails,
         mailStatus,
         mailSideNav,
+        mailFilter
         // mailSend
 
     }
