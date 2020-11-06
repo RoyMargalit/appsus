@@ -38,6 +38,7 @@ export default {
                 body: null,
                 isRead: false,
                 sentAt: mailService.currTime(),
+                name: mailService.randName()
             }
         }
     },

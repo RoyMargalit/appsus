@@ -15,7 +15,8 @@ export default {
         <!-- <mail-status></mail-status> -->
         <mail-side-nav></mail-side-nav>
         <!-- <mail-send v-if="sendMail"></mail-send> -->
-        <mail-list v-if="!sendMail" @delete="deleteMail" @mailRead="marekdReadMail" :mails="mailsToShow"></mail-list>
+        <mail-list v-if="!sendMail" @delete="deleteMail" :mails="mailsToShow"></mail-list>
+        <!-- <mail-list v-if="!sendMail" @delete="deleteMail" @mailRead="marekdReadMail" :mails="mailsToShow"></mail-list> -->
         <mail-details  ></mail-details>
     </section>
     `,
@@ -37,9 +38,9 @@ export default {
             console.log('in app:',mailId);
             mailService.remove(mailId)
         },
-        marekdReadMail(mail) {
-            mailService.save(mail)
-        }
+        // marekdReadMail(mail) {
+        //     mailService.save(mail)
+        // }
     },
     created() {
         // console.log('created');

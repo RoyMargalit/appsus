@@ -10,13 +10,14 @@ export default {
     <section v-if="mail"  class="mail-details">
         <mail-side-nav></mail-side-nav>
         <div class="details"> 
-            <h1>mail details</h1>
-            <h2 >{{mail.subject}}</h2>
-            <p >{{mail.body}}</p>
-            <button @click="deleteMail(mail.id)" >Delete</button>
-            <button @click="goBack()" >Back</button>
-            <!-- <button v-if="!mail.isRead"  @click="readMark">Read</button>
-            <button v-if="mail.isRead"  @click="readMark">Unread</button> -->
+            <!-- <h1>mail details</h1> -->
+            <button class="delet-btn-details" @click="deleteMail(mail.id)" >Delete</button>
+            <button class="back-btn-details" @click="goBack()" >Back</button>
+            <button class="back-read-details" v-if="!mail.isRead"  @click="MailReadOrUnread">Read</button>
+            <button  class="back-read-details" v-if="mail.isRead"  @click="MailReadOrUnread">Unread</button>
+            <h3 class="mail-subject-details">{{mail.subject}}</h3>
+            <hr>
+            <p class="mail-subject-body" >{{mail.body}}</p>
        </div>
     </section>
     `,
@@ -32,10 +33,11 @@ export default {
             this.$router.push('/mail')
         },
         goBack(){
-            // this.mail.isRead = true;
-            // console.log(this.mail.isRead);
-        //    mailService.save(this.mail)
             this.$router.push('/mail')
+        },
+        MailReadOrUnread(){
+            this.mail.isRead = !this.mail.isRead
+            mailService.save(this.mail)
         }
     },
     computed: {

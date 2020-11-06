@@ -1,47 +1,73 @@
 
-.mail-list {
-    /* list-style: none; */
-    background-color: lightgrey;
-    flex-basis: 80%;
-    /* flex-grow: 4; */
-    height: 100vh;
-}
-
 .mail-send {
     background-color: white ;
     flex-basis: 80%;
     height: 100vh;
 }
 
+
+
+
+
+
+.mail-list {
+    background-color: lightgrey;
+    flex-basis: 80%;
+    height: 100vh;
+}
+
+.mail-list ul {
+    margin:0;
+    padding: 0;
+}
+
 .mail-list li {
+    width: 100%;
     list-style-type: none;
     background-color: white;
     border: 1px solid black;
     padding: 0;
 }
 
-.mail-list li p {
-    /* height: 100%;
-    width: 100%; */
-    /* padding: 5px; */
-}
 
-.read {
-    background-color: rgb(165, 163, 163);
-}
+/* mailDetails */
 
 .mail-details {
     display: flex;
     height: 100vh;
     background-color: white;
-    flex-basis: 80%;
-    text-align: center;
+    /* flex-basis: 80%; */
+    /* text-align: center; */
+}
+
+.mail-details .mail-side-nav {
+    /* width: 30%; */
+    /* flex-basis: 80%; */
+    /* text-align: center; */
+}
+
+.mail-subject-details {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin-inline-start: 3%;
+}
+.mail-subject-body {
+   margin-top: 3rem;
+   margin-right: 20%;
+   margin-left: 20%;
+   line-height: 1.5;
+    /* text-align: center; */
 }
 
 .mail-preview{
     width: 100%;
     height: 100%;
 }
+
+.read {
+    background-color: rgb(165, 163, 163);
+}
+
 
 .mail-status {
     background-color: skyblue;
@@ -63,6 +89,9 @@
     background-color: white;
     flex-basis: 80%;
     text-align: center;
+    /* display: flex;
+    flex-direction: column; */
+    
 }
 
 .mail-msg input {
@@ -75,6 +104,18 @@
     padding: 5px;
 }
 
+.mail-msg p {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+/* .mail-msg button {
+  align-self: flex-end;
+} */
+
 .mail-side-nav {
     display: flex;
     flex-direction: column;
@@ -82,3 +123,38 @@
     flex-basis: 20%;
 
 }
+
+.mail-preview {
+    display: flex;
+    padding: 5px;
+    justify-content: space-between;
+}
+
+.mail-preview .mailName {
+    display: flex;
+    justify-content: start;
+    flex-basis: 15%;
+    /* flex-grow: 7; */
+}
+
+.mail-preview .maiSubject {
+    /* flex-grow: 18; */
+    flex-basis: 80%;
+}
+
+.mail-preview .mailTime {
+    justify-content: end;
+    flex-basis: 10%;
+    text-align: center;
+    /* flex: 1; */
+}
+
+.mail-preview button {
+    /* display: none; */
+}
+
+/* לנסות על ה- ליסט */
+/* 
+.mail-preview:hover +  .mail-preview button {
+    display: inline-block;
+} */

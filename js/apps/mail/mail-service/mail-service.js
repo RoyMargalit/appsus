@@ -8,6 +8,7 @@ export const mailService = {
     countMailRead,
     sendNewMail,
     currTime,
+    randName
     // addZero
 }
 
@@ -56,7 +57,8 @@ function _createMail(subject, body) {
         subject: subject,
         body,
         isRead: false,
-        sentAt: Date.now()
+        sentAt: Date.now(),
+        name: mailService.randName()
     }
     return mail
 }
@@ -95,4 +97,11 @@ function addZero(i) {
         i = "0" + i;
     }
     return i;
+}
+
+function randName() {
+    var names = ['Yosi', 'Avi', 'Dana', 'Roni', 'Roi', 'Dan', 'Rami', 'Ran', 'Idan', 'Rotem', 'Ori', 'Itay', 'Tal'];
+    var num = utilService.getRandomIntInclusive(0, 12);
+    var name = names[num]
+    return name
 }

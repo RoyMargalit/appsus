@@ -7,9 +7,12 @@ export default {
     template:`
     <section class="mail-preview" :class="mailRead" >
         <!-- <h2>mail-preview </h2> -->
-        <p   @click="getMailDetails" >{{mail.subject}} {{mail.sentAt}} </p>
-        <button v-if="!mail.isRead"  @click="readMark">Read</button>
-        <button v-if="mail.isRead"  @click="readMark">Unread</button>
+        <!-- <p   @click="getMailDetails" > {{mail.name}} {{mail.subject}} {{mail.sentAt}} </p> -->
+        <span @click="getMailDetails" class='mailName'>{{mail.name}}</span>
+        <span @click="getMailDetails" class='maiSubject'>{{mail.subject}}</span>
+        <span @click="getMailDetails" class='mailTime'>{{mail.sentAt}}</span>
+        <button @click="emitDelete(mail.id)">x</button>
+    
         
     </section>
     `,
@@ -18,18 +21,22 @@ export default {
             subject:null,
             body:null,
             isRead:false,
-            sentAt:null
+            sentAt:null,
+            name: ''
         }
     }, 
     methods: {
         getMailDetails() {
             this.$router.push('/mail/'  + this.mail.id)
         },
-        readMark(){
-            this.mail.isRead = !this.mail.isRead
-            this.$emit('mailRead', this.mail)
-            // console.log(this.mail);
-        }
+        emitDelete(mailId){
+            this.$emit('delete', mailId)
+        },
+        // readMark(){
+        //     this.mail.isRead = !this.mail.isRead
+        //     this.$emit('mailRead', this.mail)
+        //     // console.log(this.mail);
+        // }
     },
     computed: {
         mailRead() {
