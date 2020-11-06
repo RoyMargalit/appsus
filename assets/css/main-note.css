@@ -98,3 +98,6 @@
     padding-top: 10px;
     margin-top: 5px;
 }
+.completed{
+    text-decoration: line-through;
+}

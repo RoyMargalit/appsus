@@ -21,7 +21,8 @@ export default {
 							@click="styleNote(color.value)">&nbsp; </span>
 					</template>
 				</div>
-			</i>
+            </i>
+            <button class="fas fa-edit" title="Edit" @click="editNote">Edit</button>
 			
 
 		</aside>

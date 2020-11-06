@@ -49,7 +49,7 @@ export default {
                     break;
                 case "todo":
                     console.log(this.newNote)
-                    this.newNote.info.todos.txt = this.inputUser
+                    this.newNote.info.todos = this.inputUser
                     break;
                 case "video":
                     this.newNote.info.url = this.inputUser
@@ -72,10 +72,10 @@ export default {
                     this.placeHolder = 'enter image URL'
                     break;
                 case "todo":
-                    this.placeHolder = 'What to do?'
+                    this.placeHolder = "What to do? seperate using '+' "
                     break;
                 case "video":
-                    this.placeHolder = 'enter a Video'
+                    this.placeHolder = 'Enter a Video URL'
                     break;
             }
         },
@@ -130,12 +130,3 @@ export default {
 
 
 
-
-
-
-
-
-
-// <button :info="inputUser" @click="component= 'note-text'"> Text </button>
-//         <button :info="inputUser" @click="component= 'note-img'"> Image </button>
-//         <button :info="inputUser" @click="component= 'note-todo'"> To Do</button>

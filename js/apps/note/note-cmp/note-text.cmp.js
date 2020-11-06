@@ -1,4 +1,5 @@
 import noteActions from './note-actions.cmp.js'
+import noteEdit from './note-edit.cmp.js'
 export default {
     props: ['note'],
 
@@ -10,6 +11,7 @@ export default {
         <pre>{{note.info.txt}}</pre>    
         
         <note-actions :note="note" ></note-actions>
+        <note-edit :note="note" v-if="note.isEdit"></note-edit>
     </section>
     `,
     data() {
@@ -24,6 +26,7 @@ export default {
         },
     },
     components:{
-        noteActions
+        noteActions,
+        noteEdit
     }
 }

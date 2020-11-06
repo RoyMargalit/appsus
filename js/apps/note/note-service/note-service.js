@@ -6,7 +6,12 @@ export const noteService = {
     saveNote,
     remove,
     styleNote,
-    getNoteById
+    getNoteById,
+    updateListNoteStatus,
+    saveTodo,
+    editNote,
+    closeEdit
+
 }
 const STORAGE_KEY = 'noteDB'
 
@@ -37,6 +42,73 @@ function getNoteById(id) {
 	var note = gNotes.find(note => note.id === id);
 	return Promise.resolve(note);
 }
+
+
+function updateListNoteStatus(id, listIdx) {//not in use dbl check
+    console.log('in service update status');
+	return getNoteById(id)
+		.then(note => {
+			note.info.todos[listIdx].completed = !note.info.todos[listIdx].completed;
+			saveNoteToStorage();
+		});
+}
+
+function editNote(id,newData) {
+	return getNoteById(id)
+		.then(note => {
+            if(note.isEdit){
+                note.info.txt=newData
+            }
+			saveNoteToStorage();
+            note.isEdit = !note.isEdit;
+            // return Promise.resolve(note);
+        });
+        
+}
+
+function closeEdit(id){
+    console.log('pooo---------');
+    return getNoteById(id)
+		.then(note => {
+            note.isEdit = !note.isEdit;
+            console.log(note.isEdit,'--------');
+            saveNoteToStorage();
+            // return Promise.resolve(note)
+		});
+}
+
+
+function saveTodo(note, data) {
+	if (!note) Promise.reject();
+
+	switch (note.type) {
+		case 'audio':
+            console.log('error');
+			break;
+		case 'todo':
+			let listArr = note.info.todos.split('+');
+			note.info.todos = listArr.map(item => {
+				return { text: item, completed: false };
+			});
+			break;
+		// default:
+		// 	return Promise.reject();
+	}
+
+	// Save data
+	// if (note.id) {
+	// 	// Update existing note
+	// 	let noteIdx = gNotes.findIndex(currNote => currNote.id === note.id);
+	// 	gNotes.splice(noteIdx, 1, note);
+		// Add new note
+		note.id = utilService.makeId();
+		gNotes.unshift(note);
+
+	utilService.storeToStorage(STORAGE_KEY,note);
+	return Promise.resolve(note);
+}
+
+
 
 
 function _createNotes() {
@@ -226,7 +298,7 @@ function styleNote(id, bgColor) {
 function saveNote(currNote) {
     // console.log(currNote.type);
     console.log(currNote.info.txt);
-    gNotes.push(currNote)
+    gNotes.unshift(currNote)
     utilService.storeToStorage(STORAGE_KEY, gNotes)
     console.log(gNotes)
     return Promise.resolve(gNotes)
