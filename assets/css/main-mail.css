@@ -69,12 +69,23 @@
 }
 
 .read {
-    background-color: rgb(165, 163, 163);
+    background-color: rgba(165, 163, 163, 0.3);
 }
 
 
 .mail-status {
-    background-color: skyblue;
+    background-color: white;
+    flex-basis: 100%;
+    text-align: center;
+    /* margin-top: 10px; */
+}
+
+.mail-status p {
+    background-color: lightgray;
+    flex-basis: 100%;
+    margin: 0;
+    border: 1px solid black;
+    text-align: center;
 }
 
 .mail-app {

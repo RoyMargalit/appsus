@@ -13,8 +13,8 @@ export default {
             <!-- <h1>mail details</h1> -->
             <button class="delet-btn-details" @click="deleteMail(mail.id)" >Delete</button>
             <button class="back-btn-details" @click="goBack()" >Back</button>
-            <button class="back-read-details" v-if="!mail.isRead"  @click="MailReadOrUnread">Read</button>
-            <button  class="back-read-details" v-if="mail.isRead"  @click="MailReadOrUnread">Unread</button>
+            <button class="mail-Read-Btn" v-if="!mail.isRead"  @click="MailReadOrUnread">Read</button>
+            <button  class="mail-Read-Btn" v-if="mail.isRead"  @click="MailReadOrUnread">Unread</button>
             <h3 class="mail-subject-details">{{mail.subject}}</h3>
             <hr>
             <p class="mail-subject-body" >{{mail.body}}</p>
@@ -53,6 +53,7 @@ export default {
      const id = this.$route.params.mailId
      mailService.getById(id)
         .then(mail => this.mail = mail)
+        
     }
     
 }

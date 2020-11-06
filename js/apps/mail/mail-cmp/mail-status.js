@@ -5,8 +5,8 @@ export default {
     template:`
     <section class="mail-status">
 
-        <p>mail status</p>
-        <p> {{mailsReadNum}} </p>
+        
+        <p>Unread: {{ mailsReadNum}} </p>
         <!-- <p> {{mailsRead}} </p> -->
        
     </section>
@@ -25,7 +25,7 @@ export default {
     },
     computed: {
         mailsReadNum(){
-            return mailService.countMailRead()
+            return mailService.countMailUnRead()
         }
     },
     created() {

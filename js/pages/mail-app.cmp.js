@@ -13,7 +13,7 @@ export default {
     template: `
     <section class="mail-app">
         <!-- <h2>mail</h2> -->
-        <!-- <mail-status></mail-status> -->
+        <mail-status></mail-status>
         <mail-filter @doFilter="setFilter" ></mail-filter>
         <mail-side-nav></mail-side-nav>
         <!-- <mail-send v-if="sendMail"></mail-send> -->
@@ -33,10 +33,11 @@ export default {
     computed: {
         mailsToShow() {
             if (!this.filterBy) return this.mails;
-            const txt = this.filterBy.toLowerCase();
-            console.log(this.mails);
-            return this.mails.filter(mail => mail.name.toLowerCase().includes(txt) || 
-            mail.subject.toLowerCase().includes(txt) ||  mail.body.toLowerCase().includes(txt))
+            const txt = this.filterBy.filterByTxt.toLowerCase();
+            return this.mails.filter(mail => (mail.name.toLowerCase().includes(txt) || 
+            mail.subject.toLowerCase().includes(txt) ||  mail.body.toLowerCase().includes(txt)) &&
+            (mail.isRead && this.filterBy.isRead || !mail.isRead && this.filterBy.isUnRead)
+            )
         },
     },
     methods: {
@@ -45,7 +46,6 @@ export default {
             mailService.remove(mailId)
         },
         setFilter(filterBy) {
-            console.log(filterBy);
             this.filterBy = filterBy
         },
         // marekdReadMail(mail) {
