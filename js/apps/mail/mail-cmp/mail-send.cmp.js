@@ -20,7 +20,7 @@ export default {
                 <br>    
                 <input type="text"  placeholder="Subject:" v-model="mail.subject">
                 <br> 
-                <textarea name="" id="" cols="100" rows="20" v-model="mail.body"></textarea> 
+                <textarea name="" id="" cols="100" rows="25" v-model="mail.body"></textarea> 
                 <br>
                 <div class="send-mail-btn">
                     <button @click="sendMail" >Send</button>   
