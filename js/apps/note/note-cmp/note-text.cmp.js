@@ -6,9 +6,9 @@ export default {
 
     template: `
 
-    <section class= "note-text" 
+    <section class= "note-text item" 
     :style="{'background-color': note.styles.backgroundColor }">
-        <img src="../../../../assets/css/icons/trash.ico" class="delete-cmp" @click="emitRemove(note.id)" />
+        <img src="../../../../assets/icons/trash.ico" class="delete-cmp" @click="emitRemove(note.id)" />
         <pre>{{note.info.txt}}</pre>    
         
         <note-actions :note="note" ></note-actions>

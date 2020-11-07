@@ -4,6 +4,7 @@ import {eventBus, EVENT_NOTE_ADDED, EVENT_NOTE_PINNED,
 } from '../../../service/event-bus-service.js'
 
 
+
 export default {
 	props: ['note'],
 	template: `
@@ -22,9 +23,7 @@ export default {
 					</template>
 				</div>
             </i>
-            <button class="fas fa-edit" title="Edit" @click="editNote">Edit</button>
-			
-
+            <img src="../../../../assets/icons/edit.ico" class="fas fa-edit" title="Edit" @click="editNote"/>
 		</aside>
 	`,
 	computed: {

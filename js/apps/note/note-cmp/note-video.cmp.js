@@ -3,12 +3,10 @@ export default {
     props:['note'],
     template:`
 
-    <section class= "note-video" :style="{'background-color': note.styles.backgroundColor }">
-        <button class="delete-cmp"  @click="emitRemove(note.id)">X</button>
-        <!-- <h2>note Video!!!</h2>    -->
+    <section class= "note-video item" :style="{'background-color': note.styles.backgroundColor }">
+    <img src="../../../../assets/icons/trash.ico" class="delete-cmp" @click="emitRemove(note.id)" />
         <div class="video">
-            <!-- <p>{{note.info.url}}</p>     -->
-            <iframe width="500" height="315" :src="note.info.url" frameborder="0"> </iframe>
+            <iframe width="450" height="315" :src="note.info.url" frameborder="0"> </iframe>
         </div>
         <note-actions :note="note" ></note-actions>
     </section>

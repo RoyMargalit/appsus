@@ -19,7 +19,11 @@ export default {
     <section v-if="notes" >
         <note-filter></note-filter>
         <note-add :types="types" @add="addNote"></note-add>
-        <note-list  @remove="removeNote"  :notes="notesToShow" :types="types"></note-list>
+        <div class= "container">
+            <div class= "app-container masonry">
+                <note-list  @remove="removeNote"  :notes="notesToShow" :types="types"></note-list>
+            </div>
+        </div>
     </section>
     `,
     data() {
