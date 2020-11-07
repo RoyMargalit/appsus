@@ -39,73 +39,68 @@ function remove(noteId) {
 
 
 function getNoteById(id) {
-	var note = gNotes.find(note => note.id === id);
-	return Promise.resolve(note);
+    var note = gNotes.find(note => note.id === id);
+    return Promise.resolve(note);
 }
 
 
 function updateListNoteStatus(id, listIdx) {//not in use dbl check
     console.log('in service update status');
-	return getNoteById(id)
-		.then(note => {
-			note.info.todos[listIdx].completed = !note.info.todos[listIdx].completed;
-			saveNoteToStorage();
-		});
+    return getNoteById(id)
+        .then(note => {
+            note.info.todos[listIdx].completed = !note.info.todos[listIdx].completed;
+            saveNoteToStorage();
+        });
 }
 
-function editNote(id,newData) {
-	return getNoteById(id)
-		.then(note => {
-            if(note.isEdit){
-                note.info.txt=newData
+function editNote(id, newData) {
+    return getNoteById(id)
+        .then(note => {
+            if (note.isEdit && note.type === 'text') {
+                note.info.txt = newData
+            } else if (note.isEdit && note.type === 'todo') {
+                note.info.todos.join('+')
+                // return saveTodo(note)
+                console.log(note.info.todos, note, 'wanted------');
+
             }
-			saveNoteToStorage();
+            saveNoteToStorage();
             note.isEdit = !note.isEdit;
             // return Promise.resolve(note);
         });
-        
+
 }
 
-function closeEdit(id){
-    console.log('pooo---------');
+function closeEdit(id) {
+    // console.log('pooo---------');
     return getNoteById(id)
-		.then(note => {
+        .then(note => {
             note.isEdit = !note.isEdit;
-            console.log(note.isEdit,'--------');
+            console.log(note.isEdit, '--------');
             saveNoteToStorage();
             // return Promise.resolve(note)
-		});
+        });
 }
 
 
-function saveTodo(note, data) {
-	if (!note) Promise.reject();
+function saveTodo(note) {
+    if (!note) Promise.reject();
 
-	switch (note.type) {
-		case 'audio':
-            console.log('error');
-			break;
-		case 'todo':
-			let listArr = note.info.todos.split('+');
-			note.info.todos = listArr.map(item => {
-				return { text: item, completed: false };
-			});
-			break;
-		// default:
-		// 	return Promise.reject();
-	}
+    switch (note.type) {
+        case 'todo':
+            let listArr = note.info.todos.split('+');
+            note.info.todos = listArr.map(item => {
+                return { text: item, completed: false };
+            });
+            break;
+        // default:
+        // 	return Promise.reject();
+    }
+    note.id = utilService.makeId();
+    gNotes.unshift(note);
 
-	// Save data
-	// if (note.id) {
-	// 	// Update existing note
-	// 	let noteIdx = gNotes.findIndex(currNote => currNote.id === note.id);
-	// 	gNotes.splice(noteIdx, 1, note);
-		// Add new note
-		note.id = utilService.makeId();
-		gNotes.unshift(note);
-
-	utilService.storeToStorage(STORAGE_KEY,note);
-	return Promise.resolve(note);
+    utilService.storeToStorage(STORAGE_KEY, note);
+    return Promise.resolve(note);
 }
 
 
@@ -285,14 +280,14 @@ var gNotes = [
 
 
 function styleNote(id, bgColor) {
-    console.log('note id service:',id,'color',bgColor);
-	return getNoteById(id)
-		.then(note => {
+    console.log('note id service:', id, 'color', bgColor);
+    return getNoteById(id)
+        .then(note => {
             note.styles.backgroundColor = bgColor;
             console.log(note);
             // _saveNotesToStorage(note);
             saveNoteToStorage()
-		});
+        });
 }
 
 function saveNote(currNote) {
@@ -310,7 +305,7 @@ function saveNote(currNote) {
 
 
 function saveNoteToStorage() {
-	utilService.storeToStorage(STORAGE_KEY, gNotes);
+    utilService.storeToStorage(STORAGE_KEY, gNotes);
 }
 
 

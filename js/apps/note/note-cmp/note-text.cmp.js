@@ -1,5 +1,6 @@
 import noteActions from './note-actions.cmp.js'
 import noteEdit from './note-edit.cmp.js'
+// import asset from '../../../../assets/css/icons/trash.ico'
 export default {
     props: ['note'],
 
@@ -7,7 +8,7 @@ export default {
 
     <section class= "note-text" 
     :style="{'background-color': note.styles.backgroundColor }">
-        <button class="delete-cmp" @click="emitRemove(note.id)">X</button>
+        <img src="../../../../assets/css/icons/trash.ico" class="delete-cmp" @click="emitRemove(note.id)" />
         <pre>{{note.info.txt}}</pre>    
         
         <note-actions :note="note" ></note-actions>

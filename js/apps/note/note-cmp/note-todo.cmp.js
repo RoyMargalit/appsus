@@ -1,4 +1,5 @@
 import noteActions from '../note-cmp/note-actions.cmp.js' 
+import noteEdit from '../note-cmp/note-edit.cmp.js' 
 import { eventBus, EVENT_LIST_NOTE_STATUS_CHANGED } from '../../../service/event-bus-service.js'
 export default {
     props: ['note'],
@@ -22,6 +23,7 @@ export default {
 			</ul>
 
             <note-actions :note="note" ></note-actions>
+            <note-edit :note ="note" v-if="note.isEdit"></note-edit>
             
     </section>
     
@@ -45,6 +47,7 @@ export default {
 		}
     },
     components:{
-        noteActions
+        noteActions,
+        noteEdit
     }
 }

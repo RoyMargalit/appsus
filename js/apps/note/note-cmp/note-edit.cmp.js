@@ -28,11 +28,10 @@ export default {
                     break;
                 case 'image':
                 case 'video':
-                case 'audio':
                     strValue = this.note.info.url;
                     break;
-                case 'list':
-                    strValue = this.note.data.list.map(list => list.text).join('+');
+                case 'todo':
+                    strValue = this.note.info.todos.map((list => list.txt));
                     break;
             }
             return strValue;
