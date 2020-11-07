@@ -5,8 +5,8 @@ export default {
     props: ['note'],
     template: `
     <section class="note-todo item" :style="{'background-color': note.styles.backgroundColor }">
-        <button class="delete-cmp" @click="emitRemove(note.id)" >X</button>
-        <h2>To Do</h2>
+    <img src="../../../../assets/icons/trash.ico" class="delete-cmp" @click="emitRemove(note.id)" />
+        <h3>To Do:</h3>
             <!-- <ul>
 				<li v-for="(item,idx) in note.info.todos">
                     <label>   

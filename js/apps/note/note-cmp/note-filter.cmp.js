@@ -2,14 +2,14 @@ import { eventBus } from '../../../service/event-bus-service.js'
 import { EVENT_NOTE_FILTERED } from '../../../service/event-bus-service.js'
 export default {
     template: `
-        <section class="search notes-filter flex justify-content-center">
+        <section class="search note-filter">
 
             <div>
                 <!-- <button @input="updateFilter">updateFilter</button> -->
-                <input v-model="filter.txt" type="search" placeholder="Search notes" @input="updateFilter">
+                <input v-model="filter.txt" class="search-input" type="search" placeholder="Search notes" @input="updateFilter">
             </div>
 
-            <select v-model="filter.type" @change="updateFilter">
+            <select v-model="filter.type" class="search-select" @change="updateFilter">
                 <option value="">All</option>
                 <option value="text">Text</option>
                 <option value="img">Image</option>

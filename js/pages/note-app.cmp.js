@@ -17,8 +17,10 @@ export default {
     name: 'note-app',
     template: `
     <section v-if="notes" >
-        <note-filter></note-filter>
-        <note-add :types="types" @add="addNote"></note-add>
+        <div class="inputs">
+            <note-add :types="types" @add="addNote"></note-add>
+            <note-filter></note-filter>
+        </div>
         <div class= "container">
             <div class= "app-container masonry">
                 <note-list  @remove="removeNote"  :notes="notesToShow" :types="types"></note-list>
@@ -29,10 +31,10 @@ export default {
     data() {
         return {
             types: {
-                text: { sector: 'text', btn: 'Txt', placeholder: 'keep your ideas!' },
-                img: { sector: 'img', btn: 'Img', placeholder: 'keep your images!' },
-                todo: { sector: 'todo', btn: 'todo', placeholder: 'What to do next!' },
-                video: { sector: 'video', btn: 'video', placeholder: 'Upload a video!' }
+                text: { sector: 'text', btn: 'Txt',iconSrc:'../../../../assets/icons/text.ico', placeholder: 'keep your ideas!' },
+                img: { sector: 'img', btn: 'Img',iconSrc:'../../../../assets/icons/image.ico', placeholder: 'keep your images!' },
+                todo: { sector: 'todo', btn: 'todo',iconSrc:'../../../../assets/icons/list.ico', placeholder: 'What to do next!' },
+                video: { sector: 'video', btn: 'video',iconSrc:'../../../../assets/icons/film .ico', placeholder: 'Upload a video!' }
             },
             cmp: null,
             notes: null,

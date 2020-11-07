@@ -6,7 +6,7 @@ export default {
     <section class= "note-video item" :style="{'background-color': note.styles.backgroundColor }">
     <img src="../../../../assets/icons/trash.ico" class="delete-cmp" @click="emitRemove(note.id)" />
         <div class="video">
-            <iframe width="450" height="315" :src="note.info.url" frameborder="0"> </iframe>
+            <iframe width="500" height="400" :src="note.info.url" frameborder="0"> </iframe>
         </div>
         <note-actions :note="note" ></note-actions>
     </section>

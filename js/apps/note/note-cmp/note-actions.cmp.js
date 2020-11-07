@@ -8,16 +8,16 @@ import {eventBus, EVENT_NOTE_ADDED, EVENT_NOTE_PINNED,
 export default {
 	props: ['note'],
 	template: `
-		<aside class="note-item-actions flex space-between">
+		<aside class="note-actions">
 
 			<!-- <i :class="getIconClass" :title="getIconTitle"></i> -->
 			<span> &nbsp; </span>
 			<!-- <i class="fas fa-thumbtack" :class="{pinned: note.settings.pinned}" title="Pin note" @click="pinNote"></i>
 			<i class="fas fa-check" :class="{marked: note.settings.marked}" title="Mark note" @click="markNote"></i> -->
-			<i class="fas fa-palette info colors dropdown" title="Change note color">
+			<!-- <i class="fas fa-palette info colors dropdown" title="Change note color"> -->
 				<div class="dropdown-content">
 					<template v-for="color in availableColors">
-						<span :style="{'background-color': color.value}"
+						<span :style="{'background-color': color.value}" class="color-palet"
 							:class="getBgColorClass(color.value)"
 							@click="styleNote(color.value)">&nbsp; </span>
 					</template>

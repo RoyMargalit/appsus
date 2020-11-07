@@ -9,8 +9,7 @@ export default {
     <section class= "note-text item" 
     :style="{'background-color': note.styles.backgroundColor }">
         <img src="../../../../assets/icons/trash.ico" class="delete-cmp" @click="emitRemove(note.id)" />
-        <pre>{{note.info.txt}}</pre>    
-        
+        <p>{{note.info.txt}}</p>    
         <note-actions :note="note" ></note-actions>
         <note-edit :note="note" v-if="note.isEdit"></note-edit>
     </section>
@@ -20,6 +19,8 @@ export default {
             // info: this.info,
         }
     },
+
+    ////SWITCHED TO TEXT AREA
     methods: {
         emitRemove(noteId) {
             console.log('note id', noteId);

@@ -5,6 +5,8 @@ import noteImg from '../note-cmp/note-img.cmp.js'
 import noteTodo from '../note-cmp/note-todo.cmp.js'
 import noteVideo from '../note-cmp/note-video.cmp.js'
 
+// import d from '../../../../assets/icons/'
+
 export default {
     props: ['types'],
     template: `
@@ -18,7 +20,7 @@ export default {
             <input  @keyup.enter="addNote" v-model="inputUser" :placeholder="placeHolder"/>
                 <div class="type-btn">
                     <template v-for="(type, idx) in types">
-                        <button :class="setSelectedType(type.btn)" @click="changeType(idx)">{{type.btn}}</button> 
+                        <img :src= type.iconSrc  class="type-btns" @click="changeType(idx)"/> 
                     </template>
                 </div>
         </div>
