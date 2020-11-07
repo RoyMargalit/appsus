@@ -10,14 +10,16 @@ export default {
     <section v-if="mail"  class="mail-details">
         <mail-side-nav class="mail-side-nav"></mail-side-nav>
         <div class="details"> 
-            <!-- <h1>mail details</h1> -->
-            <button class="delet-btn-details" @click="deleteMail(mail.id)" >Delete</button>
-            <button class="back-btn-details" @click="goBack()" >Back</button>
-            <button class="mail-Read-Btn" v-if="!mail.isRead"  @click="MailReadOrUnread">Read</button>
-            <button  class="mail-Read-Btn" v-if="mail.isRead"  @click="MailReadOrUnread">Unread</button>
+            <div class="details-btn">
+                <img @click="goBack()" src="../../../../assets/icons/back.ico">
+                <button class="mail-read-btn" v-if="!mail.isRead"  @click="MailReadOrUnread">Read</button>
+                <button  class="mail-unRead-btn" v-if="mail.isRead"  @click="MailReadOrUnread">Unread</button>
+                <img @click="deleteMail(mail.id)" src="../../../../assets/icons/trash.ico">
+            </div>
             <h3 class="mail-subject-details">{{mail.subject}}</h3>
             <hr>
             <p class="mail-subject-body" >{{mail.body}}</p>
+            <router-link class="forward" to="/send" exact> <img src="../../../../assets/icons/forward.ico"></router-link>
        </div>
     </section>
     `,

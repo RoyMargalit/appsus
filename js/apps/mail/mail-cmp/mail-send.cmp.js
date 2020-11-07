@@ -1,6 +1,7 @@
 import mailSideNav from './mail-side-nav.cmp.js'
 import {mailService} from '../mail-service/mail-service.js'
 import {utilService} from '../../../service/util-service.js'
+// import ggg from '../../../../assets/icons/trash.ico'
 
 export default {
     // props:[],
@@ -20,9 +21,12 @@ export default {
                 <input type="text"  placeholder="Subject:" v-model="mail.subject">
                 <br> 
                 <textarea name="" id="" cols="100" rows="20" v-model="mail.body"></textarea> 
-                <br> 
-                <button @click="sendMail" >Send</button>   
-                <button @click="deleteTxt">delete</button>   
+                <br>
+                <div class="send-mail-btn">
+                    <button @click="sendMail" >Send</button>   
+                    <img @click="deleteTxt" src="../../../../assets/icons/trash.ico">
+                    <!-- <button @click="deleteTxt">delete</button>    -->
+                </div> 
             </form>
         </div>
        

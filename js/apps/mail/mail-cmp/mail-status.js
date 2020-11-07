@@ -6,7 +6,7 @@ export default {
     <section class="mail-status">
 
         
-        <p>Unread: {{ mailsReadNum}} </p>
+        <p><span>Unread: {{ mailsReadNum}} </span></p>
         <!-- <p> {{mailsRead}} </p> -->
        
     </section>
