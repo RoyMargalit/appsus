@@ -1,8 +1,9 @@
 
-.mail-send {
-    background-color: white ;
-    flex-basis: 80%;
-    height: 100vh;
+
+
+.mail-app {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 
@@ -10,8 +11,11 @@
 
 
 
+
+/* mail list */
+
 .mail-list {
-    background-color: lightgrey;
+    background-color: white;
     flex-basis: 80%;
     height: 100vh;
 }
@@ -44,10 +48,7 @@
 }
 
 .mail-details .mail-side-nav {
-    /* flex-basis: 72%; */
     flex-grow: 1;
-    /* flex-basis: 30%; */
-    /* flex-grow: 1fr; */
 }
 
 .mail-subject-details {
@@ -60,24 +61,19 @@
    margin-right: 20%;
    margin-left: 20%;
    line-height: 1.5;
-    /* text-align: center; */
 }
 
-.mail-preview{
-    width: 100%;
-    height: 100%;
-}
 
-.read {
-    background-color: rgba(165, 163, 163, 0.3);
-}
 
+
+
+
+/* mail status */
 
 .mail-status {
     background-color: white;
     flex-basis: 100%;
     text-align: center;
-    /* margin-top: 10px; */
 }
 
 .mail-status p {
@@ -88,10 +84,10 @@
     text-align: center;
 }
 
-.mail-app {
-    display: flex;
-    flex-wrap: wrap;
-}
+
+
+
+/* mail filter */
 
 .mail-filter {
    flex-basis: 100%;
@@ -101,26 +97,34 @@
 
 .mail-filter input {
    background-color: lightgrey;
-   /* border-radius: 10px; */
    width: 30%;
    margin: 10px;
    padding: 7px;
 }
 
+
+.filter-read-btn {
+    width: 80px;
+    height: 25px;
+    border-radius: 15px;
+    background-color: lightblue;
+}
+
+
+/* mail send */
+
 .mail-send {
     display: flex;
     background-color: white;
+    flex-basis: 80%;
+    height: 100vh;
 }
 
 .mail-msg {
-  
     height: 100vh;
     background-color: white;
     flex-basis: 80%;
-    text-align: center;
-    /* display: flex;
-    flex-direction: column; */
-    
+    text-align: center; 
 }
 
 .mail-msg input {
@@ -145,29 +149,88 @@
   align-self: flex-end;
 } */
 
+
+
+
+
+/* mail side-nav */
+
 .mail-side-nav {
     display: flex;
     flex-direction: column;
-    background-color: slategrey;
+    text-align: center;
+    align-items: center;
+    /* background-color: #e4a723; */
+    background-color: lightblue;
     flex-basis: 20%;
-
 }
+
+
+.mail-side-nav a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2rem;
+    width: 100%;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.mail-side-nav span {
+    color: black;
+    font-size: 1.2rem;
+    width: 100%;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+
+.mail-side-nav .router-link-active {
+    background-color: rgb(250, 167, 99);
+  
+}
+
+
+.mail-side-nav .compose {
+    background-color: white;
+    text-decoration: none;
+    width: 70%;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 8px;
+    font-size: 1.4rem;
+}
+
+
+
+/* mail preview */
+
+
+.read {
+    background-color: rgba(165, 163, 163, 0.3);
+}
+
 
 .mail-preview {
     display: flex;
     padding: 5px;
     justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.mail-preview:hover {
+    cursor: pointer;
+    background-color:  #e4a723;;
 }
 
 .mail-preview .mailName {
     display: flex;
     justify-content: start;
     flex-basis: 15%;
-    /* flex-grow: 7; */
 }
 
 .mail-preview .maiSubject {
-    /* flex-grow: 18; */
     flex-basis: 80%;
 }
 
@@ -175,7 +238,6 @@
     justify-content: end;
     flex-basis: 10%;
     text-align: center;
-    /* flex: 1; */
 }
 
 .mail-preview button {

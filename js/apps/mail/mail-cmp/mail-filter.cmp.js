@@ -6,9 +6,9 @@ export default {
         <!-- <h2>Filter mails</h2> -->
             <form @submit.prevent="emitFilter" >
                 <input type="text" v-model="filterBy.filterByTxt"  placeholder="Search"/>
-                <button @click="filterBy.isUnRead = false, filterBy.isRead = true"  >Read</button>
-                <button @click="filterBy.isRead = false, filterBy.isUnRead = true"  >UnRead</button>
-                <button @click="filterBy.isRead = true, filterBy.isUnRead = true"  >All</button>
+                <button class="filter-read-btn" @click="filterBy.isRead = true, filterBy.isUnRead = true"  >All</button>
+                <button class="filter-read-btn" @click="filterBy.isUnRead = false, filterBy.isRead = true"  >Read</button>
+                <button class="filter-read-btn" @click="filterBy.isRead = false, filterBy.isUnRead = true"  >UnRead</button>
             </form>
         </section>
     `,

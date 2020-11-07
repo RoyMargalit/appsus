@@ -35,7 +35,8 @@ export default {
             if (!this.filterBy) return this.mails;
             const txt = this.filterBy.filterByTxt.toLowerCase();
             return this.mails.filter(mail => (mail.name.toLowerCase().includes(txt) || 
-            mail.subject.toLowerCase().includes(txt) ||  mail.body.toLowerCase().includes(txt)) &&
+            mail.subject.toLowerCase().includes(txt) ||  mail.body.toLowerCase().includes(txt))
+             &&
             (mail.isRead && this.filterBy.isRead || !mail.isRead && this.filterBy.isUnRead)
             )
         },
